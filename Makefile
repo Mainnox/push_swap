@@ -6,11 +6,13 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/03/19 17:01:00 by akremer          ###   ########.fr        #
+#    Updated: 2019/03/19 17:26:30 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+
+LIB = libft/libftprintf.a
 
 SRC =		ft_push_swap_ope.c			\
 			ft_check_argv.c				\
@@ -27,7 +29,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) lib
 	@gcc $(FLAGS) $(INCLUDES) -c $(SRC)
-	@gcc $(OBJ) libft/libftprintf.a -o $(NAME)
+	@gcc $(OBJ) $(LIB) -o $(NAME)
 
 clean: 
 	@rm -rf $(OBJ) && make -C ./libft/ clean
@@ -44,5 +46,8 @@ save: fclean
 	@git add *
 	@git commit -m "Sauvegarde auto !"
 	@git push
+
+test: all
+	@./$(NAME) $(ARG)
 
 .PHONY: clean fclean save $(NAME) re all lib
