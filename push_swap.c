@@ -6,24 +6,27 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/19 15:09:51 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/19 17:24:05 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static int		ft_fill_struc(t_push handle, int argc, char **argv)
+static t_push		*ft_fill_struc(int argc, char **argv)
 {
 	int i;
+	t_push *handle;
 
 	i = 0;
-	handle.size = argc - 1;
-	if (!(handle.a = (int*)malloc(sizeof(int) * handle.size)))
-		return (-12);
-	if (!(handle.b = (int*)malloc(sizeof(int) * handle.size)))
-		return (-12);
-	handle.argv = argv;
-	return (1);
+	if (!(handle = (t_push*)malloc(sizeof(t_push))))
+		return (NULL);
+	handle->size = argc - 1;
+	if (!(handle->a = (int*)malloc(sizeof(int) * handle->size)))
+		return (NULL);
+	if (!(handle->b = (int*)malloc(sizeof(int) * handle->size)))
+		return (NULL);
+	handle->argv = argv;
+	return (handle);
 }
 
 void	ft_print_error(void)
@@ -34,14 +37,17 @@ void	ft_print_error(void)
 
 int		main(int argc, char **argv)
 {
-	t_push	handle;
+	t_push	*handle;
 
-	handle.size = 0;
 	if (argc == 1)
 		return (0);
-	if (!ft_fill_struc(handle, argc, argv))
+	handle = ft_fill_struc(argc, argv);
+	if (!handle)
 		ft_print_error();
-	if (!ft_check_argv(handle))
-		ft_print_error();
+	ft_fill_argv(handle);
+	if (!ft_is_sort(handle))
+		ft_printf("Pas trier\n");
+	else
+		ft_printf("Trier\n");
 	return (0);
 }

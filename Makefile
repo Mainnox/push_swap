@@ -6,13 +6,15 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/03/19 14:55:18 by akremer          ###   ########.fr        #
+#    Updated: 2019/03/19 17:01:00 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC =		ft_push_swap_ope.c			\
+			ft_check_argv.c				\
+			ft_tools.c					\
 			push_swap.c				
 
 INCLUDES = ft_push_swap.c
