@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 11:44:26 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 12:44:41 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct		s_push
 	int				sizea;
 	int				sizeb;
 	char 			**argv;
+	int				nb_ope;
 }					t_push;
 
 void		ft_swap_a(t_push *handle);

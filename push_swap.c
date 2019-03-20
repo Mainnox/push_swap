@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 11:37:58 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 12:44:42 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static t_push		*ft_fill_struc(int argc, char **argv)
 	handle->argv = argv;
 	handle->sizea = handle->size;
 	handle->sizeb = 0;
+	handle->nb_ope = 0;
 	return (handle);
 }
 
@@ -72,8 +73,9 @@ int		main(int argc, char **argv)
 	}
 	else
 		ft_printf("Trier\n");
-//	ft_printf("Free.\n");
+	ft_print_tab(handle->a, handle->size, "handle->a");
+	ft_printf("Cout total de l'operation: %d operations chef !\n", handle->nb_ope);
 	ft_free_handle(handle);
-	ft_printf("Tout clear !\n(Enfin il me semble)\n");
+//	ft_printf("Tout clear !\n(Enfin il me semble)\n");
 	return (0);
 }

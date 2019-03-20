@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 11:44:25 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 12:06:04 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void		ft_swap_b(t_push *handle)
 	tmp = handle->b[0];
 	handle->b[0] = handle->b[1];
 	handle->b[1] = tmp;
+	handle->nb_ope++;
 }
 
 void		ft_rotate_b(t_push *handle)
@@ -38,6 +39,7 @@ void		ft_rotate_b(t_push *handle)
 		i++;
 	}
 	handle->b[handle->sizeb - 1] = start;
+	handle->nb_ope++;
 }
 
 void		ft_reverse_rotate_b(t_push *handle)
@@ -55,6 +57,7 @@ void		ft_reverse_rotate_b(t_push *handle)
 		i--;
 	}
 	handle->b[0] = end;
+	handle->nb_ope++;
 }
 
 void		ft_push_b(t_push *handle)
@@ -77,6 +80,7 @@ void		ft_push_b(t_push *handle)
 	handle->b[i] = 0;
 	handle->sizea++;
 	handle->sizeb--;
+	handle->nb_ope++;
 }
 void		ft_swap_a(t_push *handle)
 {
@@ -87,6 +91,7 @@ void		ft_swap_a(t_push *handle)
 	tmp = handle->a[0];
 	handle->a[0] = handle->a[1];
 	handle->a[1] = tmp;
+	handle->nb_ope++;
 }
 
 void		ft_rotate_a(t_push *handle)
@@ -104,6 +109,7 @@ void		ft_rotate_a(t_push *handle)
 		i++;
 	}
 	handle->a[handle->sizea - 1] = start;
+	handle->nb_ope++;
 }
 
 void		ft_reverse_rotate_a(t_push *handle)
@@ -121,6 +127,7 @@ void		ft_reverse_rotate_a(t_push *handle)
 		i--;
 	}
 	handle->a[0] = end;
+	handle->nb_ope++;
 }
 
 void		ft_push_a(t_push *handle)
@@ -143,4 +150,5 @@ void		ft_push_a(t_push *handle)
 	handle->a[i] = 0;
 	handle->sizea--;
 	handle->sizeb++;
+	handle->nb_ope++;
 }

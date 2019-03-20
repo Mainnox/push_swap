@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 11:40:00 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 12:44:36 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,30 @@ static void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle),
 	}
 }
 
+static void			ft_wich_path2(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
+{
+	int n;
+
+	if (where > handle->sizeb / 2)
+	{
+		n = handle->sizeb - where;
+		while (n)
+		{
+			f(handle);
+			n--;
+		}
+	}
+	else
+	{
+		n = where;
+		while (n != pole)
+		{
+			ft(handle);
+			n--;
+		}
+	}
+}
+
 static void			ft_while_f(t_push *handle, int n, void (*f)(t_push *handle), void(*ft)(t_push *handle))
 {
 	while (n != 0)
@@ -155,24 +179,43 @@ static void			ft_while_f(t_push *handle, int n, void (*f)(t_push *handle), void(
 }
 
 //LES ZEROS B***** GERE LES !!
+//C'est sur les swaps mais je m'en sers pas pour l'instant
+//Pour l'algo la pas besoin de faire des courbettes
 
 static void			ft_finish_him(t_push *handle)
 {
 	int max;
 	int next;
 	int soothsayer;
+	int tours;
 
+	tours = 0;
 	soothsayer = 1;
 	max = ft_find_bigger(handle->b, handle->sizeb);
 	next = max;
 	while (handle->sizeb > 0)
 	{
+		tours++;
 		if (soothsayer != 1)
 			next = ft_find_n_bigger(handle->b, handle->sizeb, max);
 		else
 			soothsayer--;
-		ft_wich_path(handle, ft_find_this(handle->b, handle->sizeb, next), &ft_reverse_rotate_b, &ft_rotate_b, 0);
+		if (tours == 2)
+		{
+			ft_printf("next = %d\n", next);
+		ft_print_tab(handle->a, handle->sizea, "handle->a");
+		ft_print_tab(handle->b, handle->sizeb, "handle->b");
+		ft_printf("\n\n\n\n\n\n\n");	
+		}
+		ft_wich_path2(handle, ft_find_this(handle->b, handle->sizeb, next), &ft_reverse_rotate_b, &ft_rotate_b, 0);
 		ft_push_b(handle);
+	if (tours == 2)
+		{
+		ft_printf("finish him tours: %d\n", tours);
+		ft_print_tab(handle->a, handle->sizea, "handle->a");
+		ft_print_tab(handle->b, handle->sizeb, "handle->b");
+		ft_printf("\n\n\n\n\n\n\n");	
+		}
 		max = next;
 	}
 }
@@ -185,12 +228,22 @@ void				ft_sort_push_swap(t_push *handle)
 	max = ft_find_bigger(handle->a, handle->size);
 	where = ft_find_this(handle->a, handle->size, max);
 	ft_wich_path(handle, where, &ft_reverse_rotate_a, &ft_rotate_a ,-1);
-	where = ft_find_this(handle->a, handle->size, ft_find_n_bigger(handle->a, handle->size, max));
-	ft_while_f(handle, where, &ft_push_a, &ft_rotate_a);
-	ft_while_f(handle, handle->sizea - 2, &ft_push_a, &ft_rotate_a);
-	ft_printf("FINISH HIM !\n");
-	ft_finish_him(handle);
+	ft_printf("Apres le gros en bas\n");
 	ft_print_tab(handle->a, handle->sizea, "handle->a");
-	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-	ft_printf("FATALITY !\n");
+	ft_printf("\n\n\n\n\n\n\n");
+	if (!ft_is_sort(handle))
+	{
+		where = ft_find_this(handle->a, handle->size, ft_find_n_bigger(handle->a, handle->size, max));
+		ft_while_f(handle, where, &ft_push_a, &ft_rotate_a);
+		ft_printf("Apres le 2eme gros en bas\n");
+		ft_print_tab(handle->a, handle->sizea, "handle->a");
+		ft_print_tab(handle->b, handle->sizeb, "handle->b");
+		ft_printf("\n\n\n\n\n\n\n");
+		ft_while_f(handle, handle->sizea - 2, &ft_push_a, &ft_rotate_a);
+		ft_printf("Apres le split\n");
+		ft_print_tab(handle->a, handle->sizea, "handle->a");
+		ft_print_tab(handle->b, handle->sizeb, "handle->b");
+		ft_printf("\n\n\n\n\n\n\n");
+		ft_finish_him(handle);
+	}
 }
