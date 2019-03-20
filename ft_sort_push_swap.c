@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 09:48:18 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 11:40:00 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static int			ft_find_this(int *tab, int size, int this)
 	{
 		if (tab[i] == this)
 			return (i);
+		i++;
 	}
 	return (-1);
 }
@@ -82,7 +83,7 @@ static int			ft_find_bigger(int *tab, int size)
 	int ret;
 
 	i = 0;
-	ret = 0;
+	ret = tab[i];
 	while (i < size)
 	{
 		if (tab[i] > ret)
@@ -104,17 +105,22 @@ static int			ft_find_n_bigger(int *tab, int size, int beforethis)
 	int ret;
 
 	i = 0;
-	ret = 0;
+	ret = tab[i];
 	while (i < size)
 	{
-		if (tab[i] > ret && tab[i] != beforethis)
+		if (tab[i] > ret && tab[i] < beforethis)
 			ret = tab[i];
 		i++;
 	}
+//	ft_printf("\n\n\n\nret = %d\n\n\n\n", ret);
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	return (ret);
 }
+	//ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 
-static void			ft_wich_path(t_push *handle, int where)
+static void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
 {
 	int n;
 
@@ -123,29 +129,52 @@ static void			ft_wich_path(t_push *handle, int where)
 		n = handle->size - where - 1;
 		while (n)
 		{
-			ft_reverse_rotate(handle);
+			f(handle);
 			n--;
 		}
 	}
 	else
 	{
 		n = where;
-		while (n != -1)
+		while (n != pole)
 		{
-			ft_rotate(handle);
+			ft(handle);
 			n--;
 		}
 	}
 }
 
-static void			ft_while_f(t_push *handle, int n, void (*f)(t_push *handle))
+static void			ft_while_f(t_push *handle, int n, void (*f)(t_push *handle), void(*ft)(t_push *handle))
 {
 	while (n != 0)
 	{
 		f(handle);
 		n--;
 	}
-	ft_rotate(handle);
+	ft(handle);
+}
+
+//LES ZEROS B***** GERE LES !!
+
+static void			ft_finish_him(t_push *handle)
+{
+	int max;
+	int next;
+	int soothsayer;
+
+	soothsayer = 1;
+	max = ft_find_bigger(handle->b, handle->sizeb);
+	next = max;
+	while (handle->sizeb > 0)
+	{
+		if (soothsayer != 1)
+			next = ft_find_n_bigger(handle->b, handle->sizeb, max);
+		else
+			soothsayer--;
+		ft_wich_path(handle, ft_find_this(handle->b, handle->sizeb, next), &ft_reverse_rotate_b, &ft_rotate_b, 0);
+		ft_push_b(handle);
+		max = next;
+	}
 }
 
 void				ft_sort_push_swap(t_push *handle)
@@ -155,10 +184,13 @@ void				ft_sort_push_swap(t_push *handle)
 
 	max = ft_find_bigger(handle->a, handle->size);
 	where = ft_find_this(handle->a, handle->size, max);
-	ft_wich_path(handle, where);
+	ft_wich_path(handle, where, &ft_reverse_rotate_a, &ft_rotate_a ,-1);
 	where = ft_find_this(handle->a, handle->size, ft_find_n_bigger(handle->a, handle->size, max));
-	ft_while_f(handle, where, &ft_push);
-	ft_while_f(handle, handle->size - 2, &ft_push);
-	ft_print_tab(handle->a, handle->size, "handle->a");
-	ft_print_tab(handle->b, handle->size, "handle->b");
+	ft_while_f(handle, where, &ft_push_a, &ft_rotate_a);
+	ft_while_f(handle, handle->sizea - 2, &ft_push_a, &ft_rotate_a);
+	ft_printf("FINISH HIM !\n");
+	ft_finish_him(handle);
+	ft_print_tab(handle->a, handle->sizea, "handle->a");
+	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+	ft_printf("FATALITY !\n");
 }

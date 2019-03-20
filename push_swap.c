@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 09:48:16 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 11:37:58 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static t_push		*ft_fill_struc(int argc, char **argv)
 	}
 	ft_bzero((void*)handle->b, handle->size);
 	handle->argv = argv;
+	handle->sizea = handle->size;
+	handle->sizeb = 0;
 	return (handle);
 }
 
@@ -64,13 +66,13 @@ int		main(int argc, char **argv)
 	ft_print_tab(handle->a, handle->size, "handle->a");
 	if (ft_is_sort(handle) == 0)
 	{
-		ft_printf("Lancement du tri:\n");
+//		ft_printf("Lancement du tri:\n");
 		ft_sort_push_swap(handle);
-		ft_printf("Sortie du tri\n");
+//		ft_printf("Sortie du tri\n");
 	}
 	else
 		ft_printf("Trier\n");
-	ft_printf("Free.\n");
+//	ft_printf("Free.\n");
 	ft_free_handle(handle);
 	ft_printf("Tout clear !\n(Enfin il me semble)\n");
 	return (0);

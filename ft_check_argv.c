@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:07:23 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 08:38:58 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 11:44:28 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static void			ft_check_a(t_push *handle)
 	int j;
 
 	i = 0;
-	while (i < handle->size)
+	while (i < handle->size - 1)
 	{
 		j = i + 1;
-		while (j <= handle->size)
+		while (j < handle->size)
 		{
 			if (handle->a[i] == handle->a[j])
 				ft_print_error();
