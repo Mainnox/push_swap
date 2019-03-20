@@ -6,62 +6,11 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 12:44:36 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 12:58:15 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-//static void		ft_test_ope_push_swap(t_push *handle)
-//{
-//	ft_printf("Test sa:\n");
-//	ft_printf("Avant:\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_swap(handle->a);
-//	ft_printf("Apres.\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_printf("Test sb:\n");
-//	ft_printf("Avant:\n");
-//	ft_print_tab(handle->b, handle->size, "handle->b");
-//	ft_swap(handle->b);
-//	ft_printf("Apres.\n");
-//	ft_print_tab(handle->b, handle->size, "handle->b");
-//	ft_printf("Test pa:\n");
-//	ft_printf("Avant:\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_print_tab(handle->b, handle->size, "handle->b");
-//	ft_push(handle->a, handle->b, handle->size);
-//	ft_push(handle->a, handle->b, handle->size);
-//	ft_push(handle->a, handle->b, handle->size);
-//	ft_push(handle->a, handle->b, handle->size);
-//	ft_printf("Apres.\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_print_tab(handle->b, handle->size, "handle->b");
-//	ft_printf("Test sa:\n");
-//	ft_printf("Avant:\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_swap(handle->a);
-//	ft_printf("Apres.\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_printf("Test ra:\n");
-//	ft_printf("Avant:\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_rotate(handle->a, handle->size);
-//	ft_printf("Apres.\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_printf("Test sa:\n");
-//	ft_printf("Avant:\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_swap(handle->a);
-//	ft_printf("Apres.\n");
-//	ft_print_tab(handle->a, handle->size, "handle->a");
-//	ft_printf("Test rrb:\n");
-//	ft_printf("Avant:\n");
-//	ft_print_tab(handle->b, handle->size, "handle->b");
-//	ft_reverse_rotate(handle->b, handle->size);
-//	ft_printf("Apres.\n");
-//	ft_print_tab(handle->b, handle->size, "handle->b");
-//}
 
 static int			ft_find_this(int *tab, int size, int this)
 {
@@ -93,12 +42,6 @@ static int			ft_find_bigger(int *tab, int size)
 	return (ret);
 }
 
-// Pas compliquer nan ?
-// Bon en suite
-// Le squelette 
-// struct ?
-// On va voir
-
 static int			ft_find_n_bigger(int *tab, int size, int beforethis)
 {
 	int i;
@@ -112,13 +55,8 @@ static int			ft_find_n_bigger(int *tab, int size, int beforethis)
 			ret = tab[i];
 		i++;
 	}
-//	ft_printf("\n\n\n\nret = %d\n\n\n\n", ret);
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	return (ret);
 }
-	//ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 
 static void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
 {
@@ -187,36 +125,18 @@ static void			ft_finish_him(t_push *handle)
 	int max;
 	int next;
 	int soothsayer;
-	int tours;
 
-	tours = 0;
 	soothsayer = 1;
 	max = ft_find_bigger(handle->b, handle->sizeb);
 	next = max;
 	while (handle->sizeb > 0)
 	{
-		tours++;
 		if (soothsayer != 1)
 			next = ft_find_n_bigger(handle->b, handle->sizeb, max);
 		else
 			soothsayer--;
-		if (tours == 2)
-		{
-			ft_printf("next = %d\n", next);
-		ft_print_tab(handle->a, handle->sizea, "handle->a");
-		ft_print_tab(handle->b, handle->sizeb, "handle->b");
-		ft_printf("\n\n\n\n\n\n\n");	
-		}
 		ft_wich_path2(handle, ft_find_this(handle->b, handle->sizeb, next), &ft_reverse_rotate_b, &ft_rotate_b, 0);
 		ft_push_b(handle);
-	if (tours == 2)
-		{
-		ft_printf("finish him tours: %d\n", tours);
-		ft_print_tab(handle->a, handle->sizea, "handle->a");
-		ft_print_tab(handle->b, handle->sizeb, "handle->b");
-		ft_printf("\n\n\n\n\n\n\n");	
-		}
-		max = next;
 	}
 }
 
@@ -228,22 +148,11 @@ void				ft_sort_push_swap(t_push *handle)
 	max = ft_find_bigger(handle->a, handle->size);
 	where = ft_find_this(handle->a, handle->size, max);
 	ft_wich_path(handle, where, &ft_reverse_rotate_a, &ft_rotate_a ,-1);
-	ft_printf("Apres le gros en bas\n");
-	ft_print_tab(handle->a, handle->sizea, "handle->a");
-	ft_printf("\n\n\n\n\n\n\n");
 	if (!ft_is_sort(handle))
 	{
 		where = ft_find_this(handle->a, handle->size, ft_find_n_bigger(handle->a, handle->size, max));
 		ft_while_f(handle, where, &ft_push_a, &ft_rotate_a);
-		ft_printf("Apres le 2eme gros en bas\n");
-		ft_print_tab(handle->a, handle->sizea, "handle->a");
-		ft_print_tab(handle->b, handle->sizeb, "handle->b");
-		ft_printf("\n\n\n\n\n\n\n");
 		ft_while_f(handle, handle->sizea - 2, &ft_push_a, &ft_rotate_a);
-		ft_printf("Apres le split\n");
-		ft_print_tab(handle->a, handle->sizea, "handle->a");
-		ft_print_tab(handle->b, handle->sizeb, "handle->b");
-		ft_printf("\n\n\n\n\n\n\n");
 		ft_finish_him(handle);
 	}
 }

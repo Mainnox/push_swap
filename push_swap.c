@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 12:44:42 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 12:58:17 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,10 @@ int		main(int argc, char **argv)
 	if (!handle)
 		ft_print_error();
 	ft_fill_argv(handle);
-	ft_printf("Avant le tri:\n");
-	ft_print_tab(handle->a, handle->size, "handle->a");
 	if (ft_is_sort(handle) == 0)
-	{
-//		ft_printf("Lancement du tri:\n");
 		ft_sort_push_swap(handle);
-//		ft_printf("Sortie du tri\n");
-	}
-	else
-		ft_printf("Trier\n");
 	ft_print_tab(handle->a, handle->size, "handle->a");
 	ft_printf("Cout total de l'operation: %d operations chef !\n", handle->nb_ope);
 	ft_free_handle(handle);
-//	ft_printf("Tout clear !\n(Enfin il me semble)\n");
 	return (0);
 }
