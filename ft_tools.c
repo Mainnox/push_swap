@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:56:18 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/19 17:13:30 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 07:28:02 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,16 @@ int			ft_atoi_push_swap(char *str)
 			ft_print_error();
 	}
 	return (result * nega);
+}
+
+void		ft_print_tab(int *tab, size_t size, char *name)
+{
+	size_t i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("%s[%d] = %d\n", name, i, tab[i]);
+		i++;
+	}
 }

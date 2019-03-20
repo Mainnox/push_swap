@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:07:23 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/19 17:34:26 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 08:38:58 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,14 @@ int				ft_is_sort(t_push *handle)
 	int j;
 
 	i = 0;
-	while (i < handle->size)
+	if (handle->size == 1)
+		return (1);
+	while (i < handle->size - 1)
 	{
 		j = i + 1;
-		while (j <= handle->size)
+		while (j < handle->size)
 		{
-			if (handle->a[i] < handle->a[j])
+			if (handle->a[i] > handle->a[j])
 				return (0);
 			j++;
 		}

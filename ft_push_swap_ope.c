@@ -5,74 +5,74 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 14:46:16 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/19 14:46:21 by akremer          ###   ########.fr       */
+/*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
+/*   Updated: 2019/03/20 09:48:10 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void		ft_swap(int *a)
+void		ft_swap(t_push *handle)
 {
 	int		tmp;
 
-	if (!a[0] || !a[1])
+	if (!handle->a[0] || !handle->a[1])
 		return ;
-	tmp = a[0];
-	a[0] = a[1];
-	a[1] = a[0];
+	tmp = handle->a[0];
+	handle->a[0] = handle->a[1];
+	handle->a[1] = tmp;
 }
 
-void		ft_rotate(int *a, int taille)
+void		ft_rotate(t_push *handle)
 {
 	int start;
 	int i;
 
 	i = 0;
-	if (taille < 2)
+	if (handle->size < 2)
 		return ;
-	start = a[0];
-	while (i < taille - 1)
+	start = handle->a[0];
+	while (i < handle->size - 1)
 	{
-		a[i] = a[i + 1];
+		handle->a[i] = handle->a[i + 1];
 		i++;
 	}
-	a[taille - 1] = start;
+	handle->a[handle->size - 1] = start;
 }
 
-void		ft_reverse_rotate(int *a, int taille)
+void		ft_reverse_rotate(t_push *handle)
 {
 	int end;
 	int i;
 
-	i = taille - 1;
-	if (taille < 2)
+	i = handle->size - 1;
+	if (handle->size < 2)
 		return ;
-	end = a[i];
-	while (i > 1)
+	end = handle->a[i];
+	while (i > 0)
 	{
-		a[i] = a[i - 1];
+		handle->a[i] = handle->a[i - 1];
 		i--;
 	}
-	a[0] = end;
+	handle->a[0] = end;
 }
 
-void		ft_push(int *a, int *b, int taille)
+void		ft_push(t_push *handle)
 {
 	int i;
 
-	i = taille;
-	while (i > 1)
+	i = handle->size - 1;
+	while (i > 0)
 	{
-		a[i] = a[i -1];
+		handle->b[i] = handle->b[i - 1];
 		i--;
 	}
-	a[0] = b[0];
+	handle->b[0] = handle->a[0];
 	i = 0;
-	while (i < taille - 1)
+	while (i < handle->size - 1)
 	{
-		a[i] = a[i + 1];
+		handle->a[i] = handle->a[i + 1];
 		i++;
 	}
-	a[i] = 0;
+	handle->a[i] = 0;
 }

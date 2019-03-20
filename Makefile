@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/03/19 17:34:30 by akremer          ###   ########.fr        #
+#    Updated: 2019/03/20 09:48:13 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIB = libft/libftprintf.a
 SRC =		ft_push_swap_ope.c			\
 			ft_check_argv.c				\
 			ft_tools.c					\
+			ft_sort_push_swap.c			\
 			push_swap.c				
 
 INCLUDES = ft_push_swap.c
