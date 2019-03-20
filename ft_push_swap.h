@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 13:13:34 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 16:04:34 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "libft/includes/libft.h"
 #include "libft/includes/ft_printf.h"
+#include "libft/includes/get_next_line.h"
 
 typedef struct		s_push
 {
@@ -26,6 +27,7 @@ typedef struct		s_push
 	char 			**argv;
 	int				nb_ope;
 	char			*hack;
+	char			**gnl;
 }					t_push;
 
 void		ft_swap_a(t_push *handle);
@@ -43,5 +45,7 @@ int			ft_is_sort(t_push *handle);
 void		ft_print_tab(int *tab, size_t size, char *name);
 void		ft_sort_push_swap(t_push *handle);
 int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
+t_push		*ft_fill_struc(int argc, char **argv);
+void		ft_free_handle(t_push *handle);
 
 #endif
