@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 13:20:59 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 14:29:32 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void			ft_free_handle(t_push *handle)
 {
 	free(handle->a);
 	free(handle->b);
+	free(handle->hack);
 	free(handle);
 }
 

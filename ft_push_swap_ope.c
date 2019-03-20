@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 13:15:37 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 14:27:33 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_swap_b(t_push *handle)
 	handle->b[0] = handle->b[1];
 	handle->b[1] = tmp;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "sb", 3);
+	ft_realloc_push_swap(handle, "sb\n", 3);
 }
 
 void		ft_rotate_b(t_push *handle)
@@ -41,7 +41,7 @@ void		ft_rotate_b(t_push *handle)
 	}
 	handle->b[handle->sizeb - 1] = start;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "rb", 3);
+	ft_realloc_push_swap(handle, "rb\n", 3);
 }
 
 void		ft_reverse_rotate_b(t_push *handle)
@@ -60,7 +60,7 @@ void		ft_reverse_rotate_b(t_push *handle)
 	}
 	handle->b[0] = end;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "rrb", 4);
+	ft_realloc_push_swap(handle, "rrb\n", 4);
 }
 
 void		ft_push_b(t_push *handle)
@@ -84,7 +84,7 @@ void		ft_push_b(t_push *handle)
 	handle->sizea++;
 	handle->sizeb--;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "pb", 3);
+	ft_realloc_push_swap(handle, "pb\n", 3);
 }
 void		ft_swap_a(t_push *handle)
 {
@@ -96,7 +96,7 @@ void		ft_swap_a(t_push *handle)
 	handle->a[0] = handle->a[1];
 	handle->a[1] = tmp;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "sa", 3);
+	ft_realloc_push_swap(handle, "sa\n", 3);
 }
 
 void		ft_rotate_a(t_push *handle)
@@ -115,7 +115,7 @@ void		ft_rotate_a(t_push *handle)
 	}
 	handle->a[handle->sizea - 1] = start;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "ra", 3);
+	ft_realloc_push_swap(handle, "ra\n", 3);
 }
 
 void		ft_reverse_rotate_a(t_push *handle)
@@ -134,7 +134,7 @@ void		ft_reverse_rotate_a(t_push *handle)
 	}
 	handle->a[0] = end;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "rra", 4);
+	ft_realloc_push_swap(handle, "rra\n", 4);
 }
 
 void		ft_push_a(t_push *handle)
@@ -158,5 +158,5 @@ void		ft_push_a(t_push *handle)
 	handle->sizea--;
 	handle->sizeb++;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "pa", 3);
+	ft_realloc_push_swap(handle, "pa\n", 3);
 }

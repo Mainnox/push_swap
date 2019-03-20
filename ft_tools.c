@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:56:18 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 13:16:13 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 14:27:52 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k)
 	if (!(hack2 = (char*)malloc(sizeof(char) * size)))
 		return (0);
 	if (handle->hack)
-	{
 		ft_strcpy(hack2, handle->hack);
-		free(handle->hack);
-	}
-	ft_strjoin(hack2, ope);
+	handle->hack = ft_strjoin(hack2, ope);
 	return (1);
 }
 
