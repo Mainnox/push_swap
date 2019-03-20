@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/20 12:58:17 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/20 13:20:59 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static t_push		*ft_fill_struc(int argc, char **argv)
 		free(handle);
 		return (NULL);
 	}
+	if (!(handle->hack = (char*)malloc(sizeof(char) * 1)))
+		return (NULL);
 	ft_bzero((void*)handle->b, handle->size);
 	handle->argv = argv;
 	handle->sizea = handle->size;
@@ -67,6 +69,7 @@ int		main(int argc, char **argv)
 		ft_sort_push_swap(handle);
 	ft_print_tab(handle->a, handle->size, "handle->a");
 	ft_printf("Cout total de l'operation: %d operations chef !\n", handle->nb_ope);
+	ft_printf("Que voici:\n%s", handle->hack);
 	ft_free_handle(handle);
 	return (0);
 }
