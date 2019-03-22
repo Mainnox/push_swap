@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 14:19:02 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 14:51:59 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 15:16:00 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,25 @@ void		ft_do_op_checker(t_check *handle)
 	ope = ft_check_ope_checker(handle);
 	if (ope == 1)
 		ft_swap_a_checker(handle);
-	if (ope == 2)
+	else if (ope == 2)
 		ft_swap_b_checker(handle);
-	if (ope == 3)
+	else if (ope == 3)
 		ft_swap_s_checker(handle);
-	if (ope == 4)
+	else if (ope == 4)
 		ft_push_a_checker(handle);
-	if (ope == 5)
+	else if (ope == 5)
 		ft_push_b_checker(handle);
-	if (ope == 6)
+	else if (ope == 6)
 		ft_rotate_a_checker(handle);
-	if (ope == 7)
+	else if (ope == 7)
 		ft_rotate_b_checker(handle);
-	if (ope == 8)
+	else if (ope == 8)
 		ft_rotate_r_checker(handle);
-	if (ope == 9)
+	else if (ope == 9)
 		ft_reverse_rotate_a_checker(handle);
-	if (ope == 10)
+	else if (ope == 10)
 		ft_reverse_rotate_b_checker(handle);
-	if (ope == 11)
+	else if (ope == 11)
 		ft_reverse_rotate_r_checker(handle);
 	else
 		ft_print_error_checker();
