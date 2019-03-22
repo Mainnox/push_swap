@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 15:15:59 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 15:18:02 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,12 @@ int			main(int argc, char **argv)
 	if (!handle)
 		ft_print_error_checker();
 	ft_fill_argv_checker(handle);
-	ft_print_tab_checker(handle->a, handle->sizea, "handle->a");
 	while (get_next_line(0, handle->gnl) > 0)
 		ft_do_op_checker(handle);
 	if (ft_is_sort_checker(handle))
 		ft_putchar_puissant("OK\n");
 	else
 		ft_putchar_puissant("KO\n");
-	ft_print_tab_checker(handle->a, handle->sizea, "handle->a");
-	ft_print_tab_checker(handle->b, handle->sizeb, "handle->b");
 	ft_free_handle_checker(handle);
 	return (0);
 }
