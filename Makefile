@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/03/22 12:54:12 by akremer          ###   ########.fr        #
+#    Updated: 2019/03/22 14:48:31 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC_1 =		srcs_push_swap/ft_push_swap_ope.c			\
 SRC_2 =		srcs_checker/checker.c						\
 			srcs_checker/ft_checker_ope.c				\
 			srcs_checker/ft_tools_checker.c				\
-			srcs_checker/ft_check_argv_checker.c
+			srcs_checker/ft_check_argv_checker.c		\
+			srcs_checker/ft_do_ope_checker.c
 
 OBJ_1 = $(SRC_1:%.c=%.o)
 
@@ -43,7 +44,7 @@ all: $(NAME_1) $(NAME_2)
 $(NAME_1): $(OBJ_1) lib
 	@gcc $(OBJ_1) $(LIB) -o $(NAME_1)
 
-$(NAME_1): $(OBJ_2) lib
+$(NAME_2): $(OBJ_2) lib
 	@gcc $(OBJ_2) $(LIB) -o $(NAME_2)
 
 clean: 

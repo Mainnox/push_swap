@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:29:20 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 12:54:15 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 14:52:02 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct		s_check
 	int				sizeb;
 	char 			**argv;
 	int				nb_ope;
-	char			*hack;
 	char			**gnl;
 }					t_check;
 
@@ -43,5 +42,6 @@ void		ft_fill_argv_checker(t_check *handle);
 int			ft_atoi_checker(char *str);
 int			ft_is_sort_checker(t_check *handle);
 void		ft_print_tab_checker(int *tab, size_t size, char *name);
+void		ft_do_op_checker(t_check *handle);
 
 #endif

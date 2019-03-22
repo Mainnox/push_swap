@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 12:42:31 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 14:52:00 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,27 @@ static void	ft_free_handle_checker(t_check *handle)
 int			main(int argc, char **argv)
 {
 	t_check *handle;
-
+	
 	if (argc == 1)
 		return (0);
 	handle = ft_fill_struc_checker(argc, argv);
 	if (!handle)
 		ft_print_error_checker();
 	ft_fill_argv_checker(handle);
-	// while (ret = gnl(0, &line) > 0)
-	// {
-	//	traitement;
-	//	pas de stockage
-	//	et tout benef
-	// }
-	while (42)
+	ft_print_tab_checker(handle->a, handle->sizea, "handle->a");
+	while (get_next_line(0, handle->gnl) > 0)
 	{
-		if(get_next_line(0, handle->gnl) <= 0)
-			break ;
+		ft_printf("Return de gnl: %s\n", handle->gnl[0]);
+		ft_bzero(handle->gnl[0], ft_strlen(handle->gnl[0]));
+		ft_printf("Verif bzero: %s\n", handle->gnl[0]);
+		ft_do_op_checker(handle);
 	}
+	if (ft_is_sort_checker(handle))
+		ft_putchar_puissant("OK\n");
+	else
+		ft_putchar_puissant("KO\n");
+	ft_print_tab_checker(handle->a, handle->sizea, "handle->a");
+	ft_print_tab_checker(handle->b, handle->sizeb, "handle->b");
 	ft_free_handle_checker(handle);
 	return (0);
 }

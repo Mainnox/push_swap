@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 12:44:14 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 14:45:10 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		ft_reverse_rotate_b_checker(t_check *handle)
 	handle->nb_ope++;
 }
 
-void		ft_check_b_checker(t_check *handle)
+void		ft_push_b_checker(t_check *handle)
 {
 	int i;
 
@@ -131,7 +131,7 @@ void		ft_reverse_rotate_a_checker(t_check *handle)
 	handle->nb_ope++;
 }
 
-void		ft_check_a_checker(t_check *handle)
+void		ft_push_a_checker(t_check *handle)
 {
 	int i;
 

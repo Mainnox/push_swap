@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:29:06 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 12:45:02 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 14:42:59 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ int				ft_is_sort_checker(t_check *handle)
 		}
 		i++;
 	}
-	return (1);
+	if (handle->sizeb == 0)
+		return (1);
+	return (0);
 }
 
 void			ft_fill_argv_checker(t_check *handle)
