@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 16:08:15 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 18:11:57 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void		ft_push_b_checker(t_check *handle)
 	int i;
 
 	i = handle->sizea;
-	if (handle->sizea == 0)
-		return ;
+//	if (handle->sizea == 0)
+//		return ;
 	while (i > 0)
 	{
 		handle->a[i] = handle->a[i - 1];
@@ -138,8 +138,8 @@ void		ft_push_a_checker(t_check *handle)
 	int i;
 
 	i = handle->sizeb;
-	if (handle->sizeb == 0)
-		return ;
+//	if (handle->sizeb == 0)
+//		return ;
 	while (i > 0)
 	{
 		handle->b[i] = handle->b[i - 1];

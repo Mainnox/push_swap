@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 16:40:09 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 18:35:17 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		main(int argc, char **argv)
 	if (ft_is_sort(handle) == 0)
 		ft_sort_push_swap(handle);
 	ft_check_reduc(handle);
+//	ft_print_tab(handle->a, handle->size, "handle->a");
 	ft_printf("%s", handle->hack);
 	ft_free_handle(handle);
 	return (0);
