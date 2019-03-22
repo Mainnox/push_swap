@@ -6,13 +6,13 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 12:13:05 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/22 12:40:06 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-t_push				*ft_fill_struc(int argc, char **argv)
+static t_push				*ft_fill_struc(int argc, char **argv)
 {
 	int i;
 	t_push *handle;
@@ -34,8 +34,6 @@ t_push				*ft_fill_struc(int argc, char **argv)
 	}
 	if (!(handle->hack = (char*)malloc(sizeof(char) * 1)))
 		return (NULL);
-	if (!(handle->gnl = (char**)malloc(sizeof(char*) * 100)))
-		return (NULL);
 	ft_bzero((void*)handle->b, handle->size);
 	handle->argv = argv;
 	handle->sizea = handle->size;
@@ -44,7 +42,7 @@ t_push				*ft_fill_struc(int argc, char **argv)
 	return (handle);
 }
 
-void				ft_free_handle(t_push *handle)
+static void				ft_free_handle(t_push *handle)
 {
 	free(handle->a);
 	free(handle->b);

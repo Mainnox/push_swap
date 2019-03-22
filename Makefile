@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/03/20 16:43:47 by akremer          ###   ########.fr        #
+#    Updated: 2019/03/22 12:54:12 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,42 +20,39 @@ NAME_2 = checker
 
 LIB = libft/libftprintf.a
 
-SRC_C =		ft_push_swap_ope.c			\
-			ft_check_argv.c				\
-			ft_tools.c					\
-			ft_sort_push_swap.c			\
-			push_swap.c					\
-			checker.c
+SRC_1 =		srcs_push_swap/ft_push_swap_ope.c			\
+			srcs_push_swap/ft_check_argv.c				\
+			srcs_push_swap/ft_tools.c					\
+			srcs_push_swap/ft_sort_push_swap.c			\
+			srcs_push_swap/push_swap.c
 
-SRC_EXE_1 = push_swap.c
+SRC_2 =		srcs_checker/checker.c						\
+			srcs_checker/ft_checker_ope.c				\
+			srcs_checker/ft_tools_checker.c				\
+			srcs_checker/ft_check_argv_checker.c
 
-SRC_EXE_2 = checker.c
+OBJ_1 = $(SRC_1:%.c=%.o)
 
-INCLUDES = ft_push_swap.h
-
-OBJ_C = $(SRC_C:%.c=%.o)
-
-OBJ_EXE_1 = $(SRC_EXE_1:%.c=%.o)
-
-OBJ_EXE_2 = $(SRC_EXE_2:%.c=%.o)
+OBJ_2 = $(SRC_2:%.c=%.o)
 
 FLAGS = -Wall -Werror -Wextra -I
 
 all: $(NAME_1) $(NAME_2)
 
-$(NAME_1): $(OBJ_C) $(OBJ_EXE_1) lib
-	@gcc $(FLAGS) $(INCLUDES) -c $(SRC_C) $(SRC_EXE_1)
-	@gcc $(OBJ_C) $(OBJ_EXE_1) $(LIB) -o $(NAME_1)
 
-$(NAME_2): $(OBJ_C) $(OBJ_EXE_2) lib
-	@gcc $(FLAGS) $(INCLUDES) -c $(SRC_C) $(SRC_EXE_2)
-	@gcc $(OBJ_C) $(OBJ_EXE_2) $(LIB) -o $(NAME_2)
+$(NAME_1): $(OBJ_1) lib
+	@gcc $(OBJ_1) $(LIB) -o $(NAME_1)
+
+$(NAME_1): $(OBJ_2) lib
+	@gcc $(OBJ_2) $(LIB) -o $(NAME_2)
 
 clean: 
-	@rm -rf $(OBJ_C) && make -C ./libft/ clean
+	@rm -rf $(OBJ_1) && make -C ./libft/ clean
+	@rm -rf $(OBJ_2) && make -C ./libft/ clean
 
 fclean: clean
-	@rm -rf $(NAME_1) $(NAME_2) && make -C ./libft/ fclean
+	@rm -rf $(NAME_1)  && make -C ./libft/ fclean
+	@rm -rf $(NAME_2)  && make -C ./libft/ fclean
 
 re: fclean all
 

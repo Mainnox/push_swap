@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 12:13:05 by akremer          ###   ########.fr       */
+/*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
+/*   Updated: 2019/03/22 12:42:31 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "ft_checker.h"
 
-t_push				*ft_fill_struc(int argc, char **argv)
+static t_check			*ft_fill_struc_checker(int argc, char **argv)
 {
 	int i;
-	t_push *handle;
+	t_check *handle;
 
 	i = 0;
-	if (!(handle = (t_push*)malloc(sizeof(t_push))))
+	if (!(handle = (t_check*)malloc(sizeof(t_check))))
 		return (NULL);
 	handle->size = argc - 1;
 	if (!(handle->a = (int*)malloc(sizeof(int) * handle->size)))
@@ -32,9 +32,7 @@ t_push				*ft_fill_struc(int argc, char **argv)
 		free(handle);
 		return (NULL);
 	}
-	if (!(handle->hack = (char*)malloc(sizeof(char) * 1)))
-		return (NULL);
-	if (!(handle->gnl = (char**)malloc(sizeof(char*) * 100)))
+	if (!(handle->gnl = (char**)malloc(sizeof(char*) * 1)))
 		return (NULL);
 	ft_bzero((void*)handle->b, handle->size);
 	handle->argv = argv;
@@ -44,33 +42,41 @@ t_push				*ft_fill_struc(int argc, char **argv)
 	return (handle);
 }
 
-void				ft_free_handle(t_push *handle)
-{
-	free(handle->a);
-	free(handle->b);
-	free(handle->hack);
-	free(handle);
-}
-
-void	ft_print_error(void)
+void		ft_print_error_checker(void)
 {
 	write(2, "Error\n", 6);
 	exit(0);
 }
 
-int		main(int argc, char **argv)
+static void	ft_free_handle_checker(t_check *handle)
 {
-	t_push	*handle;
+	free(handle->a);
+	free(handle->b);
+	free(handle->gnl);
+	free(handle);
+}
+
+int			main(int argc, char **argv)
+{
+	t_check *handle;
 
 	if (argc == 1)
 		return (0);
-	handle = ft_fill_struc(argc, argv);
+	handle = ft_fill_struc_checker(argc, argv);
 	if (!handle)
-		ft_print_error();
-	ft_fill_argv(handle);
-	if (ft_is_sort(handle) == 0)
-		ft_sort_push_swap(handle);
-	ft_printf("%s", handle->hack);
-	ft_free_handle(handle);
+		ft_print_error_checker();
+	ft_fill_argv_checker(handle);
+	// while (ret = gnl(0, &line) > 0)
+	// {
+	//	traitement;
+	//	pas de stockage
+	//	et tout benef
+	// }
+	while (42)
+	{
+		if(get_next_line(0, handle->gnl) <= 0)
+			break ;
+	}
+	ft_free_handle_checker(handle);
 	return (0);
 }
