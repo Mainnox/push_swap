@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 14:19:02 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/23 16:02:03 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/23 21:07:52 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void		ft_do_op_checker(t_check *handle)
 	int ope;
 
 	ope = ft_check_ope_checker(handle);
+	ft_printf("ope = %d\n", ope);
 	if (ope == 1)
 		ft_swap_a_checker(handle);
 	else if (ope == 2)

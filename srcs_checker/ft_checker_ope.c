@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/23 15:53:16 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/23 21:08:39 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void		ft_swap_b_checker(t_check *handle)
 {
 	int		tmp;
 
-	if (handle->sizeb > 2)
+	handle->nb_ope++;
+	if (handle->sizeb < 2)
 		return ;
 	tmp = handle->b[0];
 	handle->b[0] = handle->b[1];
 	handle->b[1] = tmp;
-	handle->nb_ope++;
 }
 
 void		ft_rotate_b_checker(t_check *handle)
@@ -30,6 +30,7 @@ void		ft_rotate_b_checker(t_check *handle)
 	int i;
 
 	i = 0;
+	handle->nb_ope++;
 	if (handle->sizeb < 2)
 		return ;
 	start = handle->b[0];
@@ -39,7 +40,6 @@ void		ft_rotate_b_checker(t_check *handle)
 		i++;
 	}
 	handle->b[handle->sizeb - 1] = start;
-	handle->nb_ope++;
 }
 
 void		ft_reverse_rotate_b_checker(t_check *handle)
@@ -48,6 +48,7 @@ void		ft_reverse_rotate_b_checker(t_check *handle)
 	int i;
 
 	i = handle->sizeb - 1;
+	handle->nb_ope++;
 	if (handle->sizeb < 2)
 		return ;
 	end = handle->b[i];
@@ -57,7 +58,6 @@ void		ft_reverse_rotate_b_checker(t_check *handle)
 		i--;
 	}
 	handle->b[0] = end;
-	handle->nb_ope++;
 }
 
 void		ft_push_b_checker(t_check *handle)
@@ -65,8 +65,9 @@ void		ft_push_b_checker(t_check *handle)
 	int i;
 
 	i = handle->sizea;
-//	if (handle->sizea == 0)
-//		return ;
+	handle->nb_ope++;
+	if (handle->sizeb == 0)
+		return ;
 	while (i > 0)
 	{
 		handle->a[i] = handle->a[i - 1];
@@ -82,19 +83,18 @@ void		ft_push_b_checker(t_check *handle)
 	handle->b[i] = 0;
 	handle->sizea++;
 	handle->sizeb--;
-	handle->nb_ope++;
 }
 
 void		ft_swap_a_checker(t_check *handle)
 {
 	int		tmp;
 
-	if (handle->sizea > 2)
+	handle->nb_ope++;
+	if (handle->sizea < 2)
 		return ;
 	tmp = handle->a[0];
 	handle->a[0] = handle->a[1];
 	handle->a[1] = tmp;
-	handle->nb_ope++;
 }
 
 void		ft_rotate_a_checker(t_check *handle)
@@ -103,6 +103,7 @@ void		ft_rotate_a_checker(t_check *handle)
 	int i;
 
 	i = 0;
+	handle->nb_ope++;
 	if (handle->sizea < 2)
 		return ;
 	start = handle->a[0];
@@ -112,7 +113,6 @@ void		ft_rotate_a_checker(t_check *handle)
 		i++;
 	}
 	handle->a[handle->sizea - 1] = start;
-	handle->nb_ope++;
 }
 
 void		ft_reverse_rotate_a_checker(t_check *handle)
@@ -121,6 +121,7 @@ void		ft_reverse_rotate_a_checker(t_check *handle)
 	int i;
 
 	i = handle->sizea - 1;
+	handle->nb_ope++;
 	if (handle->sizea < 2)
 		return ;
 	end = handle->a[i];
@@ -130,7 +131,6 @@ void		ft_reverse_rotate_a_checker(t_check *handle)
 		i--;
 	}
 	handle->a[0] = end;
-	handle->nb_ope++;
 }
 
 void		ft_push_a_checker(t_check *handle)
@@ -138,8 +138,9 @@ void		ft_push_a_checker(t_check *handle)
 	int i;
 
 	i = handle->sizeb;
-//	if (handle->sizeb == 0)
-//		return ;
+	handle->nb_ope++;
+	if (handle->sizea == 0)
+		return ;
 	while (i > 0)
 	{
 		handle->b[i] = handle->b[i - 1];
@@ -155,5 +156,4 @@ void		ft_push_a_checker(t_check *handle)
 	handle->a[i] = 0;
 	handle->sizea--;
 	handle->sizeb++;
-	handle->nb_ope++;
 }
