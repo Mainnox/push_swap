@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/23 21:14:48 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/23 21:29:11 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	ft_free_handle_checker(t_check *handle)
 int			main(int argc, char **argv)
 {
 	t_check *handle;
-	
+
 	if (argc == 1)
 		return (0);
 	handle = ft_fill_struc_checker(argc, argv);
@@ -72,21 +72,22 @@ int			main(int argc, char **argv)
 	while (get_next_line(0, handle->gnl) > 0)
 	{
 		ft_do_op_checker(handle);
-		if (ft_strstr(handle->option, "v"))
-		{
-			ft_printf("\n\t\tLa jolie pile a:\n");
-			ft_print_tab_checker(handle->a, handle->sizea, "tab->a");
-			ft_printf("\n\t\tLa tres jolie pile b:\n");
-			ft_print_tab_checker(handle->b, handle->sizeb, "tab->b");
-		}
-		ft_printf("sizea = %d\nsizeb = %d\n", handle->sizea, handle->sizeb);
+		if (handle->option)
+			if (ft_strstr(handle->option, "v"))
+			{
+				ft_printf("\n\t\tLa jolie pile a:\n");
+				ft_print_tab_checker(handle->a, handle->sizea, "tab->a");
+				ft_printf("\n\t\tLa tres jolie pile b:\n");
+				ft_print_tab_checker(handle->b, handle->sizeb, "tab->b");
+			}
 	}
 	if (ft_is_sort_checker(handle))
 		ft_putchar_puissant("OK\n");
 	else
 		ft_putchar_puissant("KO\n");
-	if (ft_strstr(handle->option, "n"))
-		ft_printf("Nombre d'operation = %d\n", handle->nb_ope);
+	if (handle->option)
+		if (ft_strstr(handle->option, "n"))
+			ft_printf("Nombre d'operation = %d\n", handle->nb_ope);
 	ft_free_handle_checker(handle);
 	return (0);
 }
