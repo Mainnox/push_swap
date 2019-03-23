@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 14:19:02 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 16:04:25 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/23 16:02:03 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 static int		ft_check_ope_checker(t_check *handle)
 {
-	if (ft_strcmp(handle->gnl[0], "sa") == 0)
+	if (ft_strcmp(handle->gnl[0], "sa\n") == 0)
 		return (1);
-	else if (ft_strcmp(handle->gnl[0], "sb") == 0)
+	else if (ft_strcmp(handle->gnl[0], "sb\n") == 0)
 		return (2);
-	else if (ft_strcmp(handle->gnl[0], "ss") == 0)
+	else if (ft_strcmp(handle->gnl[0], "ss\n") == 0)
 		return (3);
-	else if (ft_strcmp(handle->gnl[0], "pa") == 0)
+	else if (ft_strcmp(handle->gnl[0], "pa\n") == 0)
 		return (4);
-	else if (ft_strcmp(handle->gnl[0], "pb") == 0)
+	else if (ft_strcmp(handle->gnl[0], "pb\n") == 0)
 		return (5);
-	else if (ft_strcmp(handle->gnl[0], "ra") == 0)
+	else if (ft_strcmp(handle->gnl[0], "ra\n") == 0)
 		return (6);
-	else if (ft_strcmp(handle->gnl[0], "rb") == 0)
+	else if (ft_strcmp(handle->gnl[0], "rb\n") == 0)
 		return (7);
-	else if (ft_strcmp(handle->gnl[0], "rr") == 0)
+	else if (ft_strcmp(handle->gnl[0], "rr\n") == 0)
 		return (8);
-	else if (ft_strcmp(handle->gnl[0], "rra") == 0)
+	else if (ft_strcmp(handle->gnl[0], "rra\n") == 0)
 		return (9);
-	else if (ft_strcmp(handle->gnl[0], "rrb") == 0)
+	else if (ft_strcmp(handle->gnl[0], "rrb\n") == 0)
 		return (10);
-	else if (ft_strcmp(handle->gnl[0], "rrr") == 0)
+	else if (ft_strcmp(handle->gnl[0], "rrr\n") == 0)
 		return (11);
 	else
 		return (0);

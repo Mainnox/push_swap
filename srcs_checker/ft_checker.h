@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:29:20 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 14:52:02 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/23 19:13:08 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_check
 	char 			**argv;
 	int				nb_ope;
 	char			**gnl;
+	char			*option;
 }					t_check;
 
 void		ft_swap_a_checker(t_check *handle);

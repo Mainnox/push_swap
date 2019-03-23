@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 17:54:06 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/23 19:13:10 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static t_check			*ft_fill_struc_checker(int argc, char **argv)
 	handle->sizea = handle->size;
 	handle->sizeb = 0;
 	handle->nb_ope = 0;
+	handle->option = NULL;
 	return (handle);
 }
 
@@ -53,6 +54,8 @@ static void	ft_free_handle_checker(t_check *handle)
 	free(handle->a);
 	free(handle->b);
 	free(handle->gnl);
+	if (handle->option != NULL)
+		free(handle->option);
 	free(handle);
 }
 
@@ -72,6 +75,8 @@ int			main(int argc, char **argv)
 		ft_putchar_puissant("OK\n");
 	else
 		ft_putchar_puissant("KO\n");
+	ft_print_tab_checker(handle->a, handle->sizea, "handle->a");
+	ft_print_tab_checker(handle->b, handle->sizeb, "handle->b");
 	ft_free_handle_checker(handle);
 	return (0);
 }
