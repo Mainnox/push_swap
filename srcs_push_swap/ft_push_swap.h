@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 17:28:58 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 07:26:15 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ typedef struct		s_push
 	char			*hack;
 	char			**gnl;
 }					t_push;
+
+typedef struct		s_sol
+{
+	int				index;
+	int				nb_ope;
+	char			*sol;
+	struct s_sol	*next;
+}					t_sol;
 
 void		ft_swap_a(t_push *handle);
 void		ft_rotate_a(t_push *handle);

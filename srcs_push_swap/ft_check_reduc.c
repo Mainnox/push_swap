@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 16:14:18 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 18:49:49 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 06:55:01 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ static int	ft_replace_hack(t_push *handle, char *replace)
 	ft_strcat(new, replace);
 	str = str + size_to_delete;
 	ft_strcat(new, str);
+	handle->nb_ope--;
 	handle->hack = new;
-	return (0);
+	return (1);
 }
 
 void		ft_check_reduc(t_push *handle)
@@ -66,19 +67,22 @@ void		ft_check_reduc(t_push *handle)
 		if (ft_strstr(handle->hack, "sa\nsb\n")
 					|| ft_strstr(handle->hack, "sb\nsa\n"))
 		{
-			ft_replace_hack(handle, "ss\n");
+			if (!ft_replace_hack(handle, "ss\n"))
+				ft_print_error();
 			continue ;
 		}
 		if (ft_strstr(handle->hack, "rra\nrrb\n")
 					|| ft_strstr(handle->hack, "rrb\nrra\n"))
 		{
-			ft_replace_hack(handle, "rrr\n");
+			if(!ft_replace_hack(handle, "rrr\n"))
+				ft_print_error();
 			continue ;
 		}
 		if (ft_strstr(handle->hack, "ra\nrb\n")
 					|| ft_strstr(handle->hack, "rb\nra\n"))
 		{
-			ft_replace_hack(handle, "rr\n");
+			if(!ft_replace_hack(handle, "rr\n"))
+				ft_print_error();
 			continue ;
 		}
 		break ;

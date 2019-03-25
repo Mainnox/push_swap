@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 18:35:17 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 07:26:13 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,41 @@ static void				ft_free_handle(t_push *handle)
 	free(handle);
 }
 
-void	ft_print_error(void)
+static t_sol			**ft_new_t_sol(t_sol **sol)
+{
+	t_sol *new;
+	t_sol *tmp;
+
+	if (!sol)
+		if (!(sol = (t_sol**)malloc(sizeof(t_sol*))))
+			return (NULL);
+	tmp = *sol;
+	if (!(new = (t_sol*)malloc(sizeof(t_sol))))
+		return (NULL);
+	if (!tmp)
+	{
+		tmp = new;
+		return (sol);
+	}
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	*sol = tmp;
+	return(sol);
+}
+
+void					ft_print_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(0);
 }
 
-int		main(int argc, char **argv)
+int						main(int argc, char **argv)
 {
 	t_push	*handle;
+	t_sol	**sol;
 
+	sol = NULL;
 	if (argc == 1)
 		return (0);
 	handle = ft_fill_struc(argc, argv);
@@ -69,7 +94,9 @@ int		main(int argc, char **argv)
 	if (ft_is_sort(handle) == 0)
 		ft_sort_push_swap(handle);
 	ft_check_reduc(handle);
-//	ft_print_tab(handle->a, handle->size, "handle->a");
+	sol = ft_new_t_sol(sol);
+	if (!sol)
+		ft_print_error();
 	ft_printf("%s", handle->hack);
 	ft_free_handle(handle);
 	return (0);
