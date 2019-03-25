@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 11:05:52 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 14:51:28 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int			main(int argc, char **argv)
 
 	beautiful_tab = "_________________________________________________";
 	if (argc == 1)
-		return (0);
+		ft_print_error_checker();
 	handle = ft_fill_struc_checker(argc, argv);
 	if (!handle)
 		ft_print_error_checker();
