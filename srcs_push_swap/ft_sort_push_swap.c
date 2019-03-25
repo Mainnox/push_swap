@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 11:10:55 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 13:55:40 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ static void				ft_algo_perso_1(t_push *handle)
 	}
 }
 
-static void				ft_is_nsort(t_push *handle, int size)
+static int				ft_is_nsort(t_push *handle, int size)
 {
 	int		i;
 	int		j;
@@ -174,25 +174,64 @@ static void				ft_is_nsort(t_push *handle, int size)
 		}
 		i++;
 	}
+	return (1);
 }
 
-static void				ft_reorder_insert(t_push *handle, int size)
+/*static void				ft_reorder_insert(t_push *handle, int size)
 {
-		if (handle->a[0] >handle->a[1])
+	int i;
+
+	i = 0;
+		if (handle->a[0] > handle->a[1])
 			ft_swap_a(handle);
-}
+		ft_printf("\nsize = %d\n", size);
+		ft_printf("%d\n%d\n", handle->a[0], handle->a[1]);
+		ft_printf("\nNsort : %d\n", ft_is_nsort(handle, size));
+		if (ft_is_nsort(handle, size) != 1)
+		{
+			ft_rotate_a(handle);
+			i++;
+			size--;
+		}
+	while (i > 0)
+	{
+		i--;
+		ft_rotate_a(handle);
+	}
+}*/
 
 static void				ft_algo_insert(t_push *handle)
 {
 	int		i;
+	int		j;
 
 	i = 2;
+	j = 0;
 	while (i <= handle->sizea)
 	{
-		if (!ft_is_sort(handle))
-			ft_reorder_insert(handle, i);
-		if (++i <= handle->sizea)
+		if (!ft_is_nsort(handle, i))
+		{
+			if (handle->a[0] > handle->a[1])
+				ft_swap_a(handle);
+			if (!ft_is_nsort(handle, i))
+			{
+				ft_rotate_a(handle);
+				j++;
+				i--;
+				continue ;
+			}
+			i += j;
+			while (j > 0)
+			{
+				ft_reverse_rotate_a(handle);
+				j--;
+			}
+		}
+		if (ft_is_sort(handle))
+			break ;
+		if (i < handle->sizea)
 			ft_reverse_rotate_a(handle);
+		i++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 18:35:19 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 13:38:18 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_swap_b(t_push *handle)
 {
 	int		tmp;
 
-	if (handle->sizeb > 2)
+	if (handle->sizeb < 2)
 		return ;
 	tmp = handle->b[0];
 	handle->b[0] = handle->b[1];
@@ -92,7 +92,7 @@ void		ft_swap_a(t_push *handle)
 {
 	int		tmp;
 
-	if (handle->sizea > 2)
+	if (handle->sizea < 2)
 		return ;
 	tmp = handle->a[0];
 	handle->a[0] = handle->a[1];

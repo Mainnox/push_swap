@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 11:06:05 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 12:52:09 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,6 @@ static t_sol			**ft_new_t_sol(t_sol **sol)
 	int		i;
 
 	i = 1;
-	if (!sol)
-		if (!(sol = (t_sol**)malloc(sizeof(t_sol*))))
-			return (NULL);
 	tmp = *sol;
 	if (!(new = (t_sol*)malloc(sizeof(t_sol))))
 		return (NULL);
@@ -75,13 +72,31 @@ static t_sol			**ft_new_t_sol(t_sol **sol)
 	else
 		tmp = new;
 	*sol = tmp;
-	return(sol);
+	return (sol);
 }
 
 void					ft_print_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(0);
+}
+
+static void				ft_free_sol(t_sol **sol)
+{
+	t_sol *tmp;
+	t_sol *tmp2;
+
+	tmp = *sol;
+	while (tmp)
+	{
+		ft_memdel((void**)&tmp->sol);
+		tmp2 = tmp->next;
+		free(tmp);
+		tmp = tmp2;
+		tmp2 = NULL;
+	}
+	tmp = NULL;
+	free(sol);
 }
 
 int						main(int argc, char **argv)
@@ -91,7 +106,11 @@ int						main(int argc, char **argv)
 	int		algo_pass;
 
 	algo_pass = 0;
-	sol = NULL;
+	if (!(sol = (t_sol**)malloc(sizeof(t_sol*))))
+		ft_print_error();
+	if (!(*sol = (t_sol*)malloc(sizeof(t_sol))))
+		ft_print_error();
+	sol[0]->next = NULL;
 	if (argc == 1)
 		return (0);
 	while (algo_pass < NB_ALGO)
@@ -103,7 +122,8 @@ int						main(int argc, char **argv)
 		if (ft_is_sort(handle) == 0)
 			ft_sort_push_swap(handle, algo_pass);
 		ft_check_reduc(handle);
-		sol = ft_new_t_sol(sol);
+		if (algo_pass != 0)
+			sol = ft_new_t_sol(sol);
 		if (!sol)
 			ft_print_error();
 		ft_fill_sol(handle, sol);
@@ -111,5 +131,6 @@ int						main(int argc, char **argv)
 		algo_pass++;
 	}
 	ft_printf("%s", ft_print_the_best(sol));
+	ft_free_sol(sol);
 	return (0);
 }
