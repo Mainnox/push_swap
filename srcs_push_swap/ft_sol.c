@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 07:51:24 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 08:45:31 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 14:19:04 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void		ft_fill_sol(t_push *handle, t_sol **sol)
 		tmp = tmp->next;
 	tmp->sol = ft_strdup(handle->hack);
 	tmp->nb_ope = handle->nb_ope;
-	*sol = tmp;
 }
 
 static char	*ft_find_the_best(t_sol **sol, int ope_min)
