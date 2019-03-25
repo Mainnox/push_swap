@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 07:26:13 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 08:45:28 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,36 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 
 static void				ft_free_handle(t_push *handle)
 {
-	free(handle->a);
-	free(handle->b);
-	free(handle->hack);
-	free(handle);
+	ft_memdel((void**)&handle->a);
+	ft_memdel((void**)&handle->b);
+	ft_memdel((void**)&handle->hack);
+	ft_memdel((void**)&handle);
 }
 
 static t_sol			**ft_new_t_sol(t_sol **sol)
 {
-	t_sol *new;
-	t_sol *tmp;
+	t_sol	*new;
+	t_sol	*tmp;
+	int		i;
 
+	i = 1;
 	if (!sol)
 		if (!(sol = (t_sol**)malloc(sizeof(t_sol*))))
 			return (NULL);
 	tmp = *sol;
 	if (!(new = (t_sol*)malloc(sizeof(t_sol))))
 		return (NULL);
-	if (!tmp)
-	{
+	if (tmp)
+		while (tmp->next && i++)
+			tmp = tmp->next;
+	new->index = i;
+	new->nb_ope = 0;
+	new->sol = NULL;
+	new->next = NULL;
+	if (tmp)
+		tmp->next = new;
+	else
 		tmp = new;
-		return (sol);
-	}
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
 	*sol = tmp;
 	return(sol);
 }
@@ -97,7 +102,8 @@ int						main(int argc, char **argv)
 	sol = ft_new_t_sol(sol);
 	if (!sol)
 		ft_print_error();
-	ft_printf("%s", handle->hack);
+	ft_fill_sol(handle, sol);
 	ft_free_handle(handle);
+	ft_printf("%s", ft_print_the_best(sol));
 	return (0);
 }

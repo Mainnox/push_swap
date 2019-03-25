@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 07:26:15 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 08:45:35 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		ft_push_a(t_push *handle);
 void		ft_swap_b(t_push *handle);
 void		ft_rotate_b(t_push *handle);
 void		ft_reverse_rotate_b(t_push *handle);
+void		ft_fill_sol(t_push *handle, t_sol **sol);
+char		*ft_print_the_best(t_sol **sol);
 void		ft_push_b(t_push *handle);
 void		ft_print_error(void);
 void		ft_fill_argv(t_push *handle);
