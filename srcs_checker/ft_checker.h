@@ -6,16 +6,18 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:29:20 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/23 20:45:42 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 11:11:00 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_CHECKER_H
 # define FT_CHECKER_H
 
-#include "../libft/includes/libft.h"
-#include "../libft/includes/ft_printf.h"
-#include "../libft/includes/get_next_line.h"
+# include "../libft/includes/libft.h"
+# include "../libft/includes/ft_printf.h"
+# include "../libft/includes/get_next_line.h"
+
+# define JOULI ___________________________________________________
 
 typedef struct		s_check
 {

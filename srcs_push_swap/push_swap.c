@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 08:45:28 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 11:06:05 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,28 @@ int						main(int argc, char **argv)
 {
 	t_push	*handle;
 	t_sol	**sol;
+	int		algo_pass;
 
+	algo_pass = 0;
 	sol = NULL;
 	if (argc == 1)
 		return (0);
-	handle = ft_fill_struc(argc, argv);
-	if (!handle)
-		ft_print_error();
-	ft_fill_argv(handle);
-	if (ft_is_sort(handle) == 0)
-		ft_sort_push_swap(handle);
-	ft_check_reduc(handle);
-	sol = ft_new_t_sol(sol);
-	if (!sol)
-		ft_print_error();
-	ft_fill_sol(handle, sol);
-	ft_free_handle(handle);
+	while (algo_pass < NB_ALGO)
+	{
+		handle = ft_fill_struc(argc, argv);
+		if (!handle)
+			ft_print_error();
+		ft_fill_argv(handle);
+		if (ft_is_sort(handle) == 0)
+			ft_sort_push_swap(handle, algo_pass);
+		ft_check_reduc(handle);
+		sol = ft_new_t_sol(sol);
+		if (!sol)
+			ft_print_error();
+		ft_fill_sol(handle, sol);
+		ft_free_handle(handle);
+		algo_pass++;
+	}
 	ft_printf("%s", ft_print_the_best(sol));
 	return (0);
 }

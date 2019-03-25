@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 18:14:43 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 11:10:55 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ static void			ft_finish_him(t_push *handle)
 	}
 }
 
-void				ft_sort_push_swap(t_push *handle)
+static void				ft_algo_perso_1(t_push *handle)
 {
 	int max;
 	int where;
@@ -155,4 +155,51 @@ void				ft_sort_push_swap(t_push *handle)
 		ft_while_f(handle, handle->sizea - 2, &ft_push_a, &ft_rotate_a);
 		ft_finish_him(handle);
 	}
+}
+
+static void				ft_is_nsort(t_push *handle, int size)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (handle->a[i] > handle->a[j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+}
+
+static void				ft_reorder_insert(t_push *handle, int size)
+{
+		if (handle->a[0] >handle->a[1])
+			ft_swap_a(handle);
+}
+
+static void				ft_algo_insert(t_push *handle)
+{
+	int		i;
+
+	i = 2;
+	while (i <= handle->sizea)
+	{
+		if (!ft_is_sort(handle))
+			ft_reorder_insert(handle, i);
+		if (++i <= handle->sizea)
+			ft_reverse_rotate_a(handle);
+	}
+}
+
+void					ft_sort_push_swap(t_push *handle, int algo_pass)
+{
+	if (algo_pass == 0)
+		ft_algo_perso_1(handle);
+	if (algo_pass == 1)
+		ft_algo_insert(handle);
 }

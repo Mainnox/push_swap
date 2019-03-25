@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 06:48:43 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/25 11:05:52 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,49 @@ static void	ft_free_handle_checker(t_check *handle)
 int			main(int argc, char **argv)
 {
 	t_check *handle;
+	char *beautiful_tab;
 
+	beautiful_tab = "_________________________________________________";
 	if (argc == 1)
 		return (0);
 	handle = ft_fill_struc_checker(argc, argv);
 	if (!handle)
 		ft_print_error_checker();
 	ft_fill_argv_checker(handle);
+		if (handle->option)
+			if (ft_strstr(handle->option, "v"))
+			{
+				if (handle->sizea > 0)
+				{
+				ft_printf("\n\t\tLa jolie pile a:\n%s\n", beautiful_tab);
+				ft_print_tab_checker(handle->a, handle->sizea, "tab->a");
+				ft_printf("%s\n", beautiful_tab);
+				}
+				if (handle->sizeb > 0)
+				{
+				ft_printf("\n\t\tLa tres jolie pile b:\n%s\n", beautiful_tab);
+				ft_print_tab_checker(handle->b, handle->sizeb, "tab->b");
+				ft_printf("%s\n", beautiful_tab);
+				}
+			}
 	while (get_next_line(0, handle->gnl) > 0)
 	{
 		ft_do_op_checker(handle);
 		if (handle->option)
 			if (ft_strstr(handle->option, "v"))
 			{
-				ft_printf("\n\t\tLa jolie pile a:\n");
+				if (handle->sizea > 0)
+				{
+				ft_printf("\n\t\tLa jolie pile a:\n_________________________________________________\n");
 				ft_print_tab_checker(handle->a, handle->sizea, "tab->a");
-				ft_printf("\n\t\tLa tres jolie pile b:\n");
+				ft_printf("__________________________________________________\n");
+				}
+				if (handle->sizeb > 0)
+				{
+				ft_printf("\n\t\tLa tres jolie pile b:\n__________________________________________________\n");
 				ft_print_tab_checker(handle->b, handle->sizeb, "tab->b");
+				ft_printf("__________________________________________________\n");
+				}
 			}
 	}
 	if (ft_is_sort_checker(handle))
