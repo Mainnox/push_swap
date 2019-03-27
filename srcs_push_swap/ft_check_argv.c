@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:07:23 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 11:11:02 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/27 11:16:06 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,20 @@ static void			ft_check_a(t_push *handle)
 	}
 }
 
-int				ft_is_sort(t_push *handle)
+int				ft_is_sort(int *tab, int size)
 {
 	int i;
 	int j;
 
 	i = 0;
-	if (handle->size == 1)
+	if (size == 1)
 		return (1);
-	while (i < handle->size - 1)
+	while (i < size - 1)
 	{
 		j = i + 1;
-		while (j < handle->size)
+		while (j < size)
 		{
-			if (handle->a[i] > handle->a[j])
+			if (tab[i] > tab[j])
 				return (0);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 14:20:21 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/27 08:49:41 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 	handle->sizea = handle->size;
 	handle->sizeb = 0;
 	handle->nb_ope = 0;
+	handle->ign = 0;
 	return (handle);
 }
 
@@ -119,7 +120,7 @@ int						main(int argc, char **argv)
 		if (!handle)
 			ft_print_error();
 		ft_fill_argv(handle);
-		if (ft_is_sort(handle) == 0)
+		if (ft_is_sort(handle->a, handle->sizea) == 0)
 			ft_sort_push_swap(handle, algo_pass);
 		ft_check_reduc(handle);
 		if (algo_pass != 0)
