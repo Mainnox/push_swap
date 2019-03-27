@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/27 15:24:46 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/27 16:25:14 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ void		ft_print_tab(int *tab, size_t size, char *name);
 void		ft_sort_push_swap(t_push *handle, int algo_pass);
 int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
 void		ft_check_reduc(t_push *handle);
-void		ft_quick_sort_1(t_push *handle);
+//Modifie le quick pas de int
+void		ft_quick_sort_1(t_push *handle, int i);
+//Modifie le quick pas de int
 void		ft_algo_insert_a(t_push *handle);
 void		ft_algo_insert_b(t_push *handle);
 

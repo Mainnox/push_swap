@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/27 15:57:53 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/27 16:25:10 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -504,5 +504,5 @@ void					ft_sort_push_swap(t_push *handle, int algo_pass)
 	if (algo_pass == 2)
 		ft_algo_insert_a(handle);
 	if (algo_pass == 0)
-		ft_quick_sort_1(handle);
+		ft_quick_sort_1(handle, 2);
 }

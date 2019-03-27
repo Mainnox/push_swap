@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/27 15:55:25 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/27 16:26:20 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,14 @@ static void					ft_split_b(t_push *handle)
 {
 	int		mid;
 	int		i;
+	int		size;
 
+	size -= handle->sizeb;
 	i = 0;
 	mid = ft_find_mid(handle->b, handle->sizeb, 0);
-	while (i < handle->sizeb)
+	while (i < size)
 	{
-		if (handle->b[0] < mid)
+		if (handle->b[0] > mid)
 			ft_push_b(handle);
 		else
 			ft_rotate_b(handle);
@@ -175,21 +177,33 @@ static void					ft_replace_head(t_push *handle)
 		ft_rotate_a(handle);
 }
 
-void						ft_quick_sort_1(t_push *handle)
+void						ft_quick_sort_1(t_push *handle, int i)
 {
+	if (i-- > 0)
+	{
 	if (handle->sizea > NBR_OK)
 		ft_split_a(handle);
 	if (handle->sizeb > NBR_OK)
 		ft_split_b(handle);
+	ft_printf("Apres le split b :\n\n\n");
+	ft_print_tab(handle->a, handle->sizea, "handle->a");
+	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizea <= NBR_OK)
 		ft_algo_insert_a(handle);
 	if (handle->sizeb <= NBR_OK && handle->sizeb)
 		ft_algo_insert_b(handle);
+	ft_printf("Apres l'insert\n\n\n");
+	ft_print_tab(handle->a, handle->sizea, "handle->a");
+	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizeb)
 		ft_put_b_on_a(handle, handle->sizeb);
 	if (ft_is_sort(handle->a, handle->sizea - handle->ign))
 		ft_replace_head(handle);
+	ft_printf("\n\nAvant debut de la recursiv\n\ne");
+	ft_print_tab(handle->a, handle->sizea, "handle->a");
 	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+	ft_quick_sort_1(handle, i--);
+	}
 //	if (!ft_is_sort(handle->a, handle->sizea) && !handle->sizeb)
 //		ft_quick_sort_1(handle);
 }
