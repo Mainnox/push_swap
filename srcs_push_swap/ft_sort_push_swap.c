@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/27 11:54:34 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/27 15:57:53 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ static int				ft_is_nsort(int *tab, int size)
 	return (1);
 }
 
-static void				ft_algo_insert_a(t_push *handle)
+void				ft_algo_insert_a(t_push *handle)
 {
 	int		i;
 	int		j;
@@ -208,7 +208,7 @@ static void				ft_algo_insert_a(t_push *handle)
 	}
 }
 
-static void				ft_algo_insert_b(t_push *handle)
+void				ft_algo_insert_b(t_push *handle)
 {
 	int		i;
 	int		j;
@@ -242,7 +242,7 @@ static void				ft_algo_insert_b(t_push *handle)
 		i++;
 	}
 }
-
+/*
 static t_push			*ft_make_save(t_push *handle)
 {
 	t_push		*save;
@@ -449,6 +449,8 @@ static void				ft_quick_sort_1(t_push *handle)
 		ft_reduc_a(handle);
 	if (!ft_is_sort(handle->a, handle->sizea))
 		ft_quick_sort_1(handle);
+	ft_print_tab(handle->a, handle->sizea, "handle->a");
+	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 }
 
 static void				ft_quick_sort_2(t_push *handle)
@@ -493,13 +495,13 @@ static void				ft_quick_sort_2(t_push *handle)
 		ft_reduc_a_2(handle);
 	if (!ft_is_sort(handle->a, handle->sizea))
 		ft_quick_sort_2(handle);
-}
+}*/
 
 void					ft_sort_push_swap(t_push *handle, int algo_pass)
 {
-	if (algo_pass == 2)
-		ft_algo_perso_1(handle);
 	if (algo_pass == 1)
+		ft_algo_perso_1(handle);
+	if (algo_pass == 2)
 		ft_algo_insert_a(handle);
 	if (algo_pass == 0)
 		ft_quick_sort_1(handle);

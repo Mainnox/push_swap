@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/27 11:54:36 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/27 15:24:46 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
-# define NB_ALGO 3
+# define NB_ALGO 1
 # define NBR_OK 7
 
 typedef struct		s_push
@@ -60,5 +60,8 @@ void		ft_print_tab(int *tab, size_t size, char *name);
 void		ft_sort_push_swap(t_push *handle, int algo_pass);
 int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
 void		ft_check_reduc(t_push *handle);
+void		ft_quick_sort_1(t_push *handle);
+void		ft_algo_insert_a(t_push *handle);
+void		ft_algo_insert_b(t_push *handle);
 
 #endif
