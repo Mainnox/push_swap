@@ -6,13 +6,13 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/27 16:25:10 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/28 07:17:41 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-static int			ft_find_this(int *tab, int size, int this)
+int			ft_find_this(int *tab, int size, int this)
 {
 	int i;
 
@@ -58,7 +58,7 @@ static int			ft_find_n_bigger(int *tab, int size, int beforethis)
 	return (ret);
 }
 
-static void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
+void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
 {
 	int n;
 
@@ -504,5 +504,5 @@ void					ft_sort_push_swap(t_push *handle, int algo_pass)
 	if (algo_pass == 2)
 		ft_algo_insert_a(handle);
 	if (algo_pass == 0)
-		ft_quick_sort_1(handle, 2);
+		ft_quick_sort_1(handle);
 }
