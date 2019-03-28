@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/28 10:36:41 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/28 12:29:44 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 	return (handle);
 }
 
-static void				ft_free_handle(t_push *handle)
+void					ft_free_handle(t_push *handle)
 {
 	ft_memdel((void**)&handle->a);
 	ft_memdel((void**)&handle->b);

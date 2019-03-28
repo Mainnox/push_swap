@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 07:51:24 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 14:48:03 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/28 12:15:27 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static char	*ft_find_the_best(t_sol **sol, int ope_min)
 			return (tmp->sol);
 		tmp = tmp->next;
 	}
+	ft_printf("algo use = %d\n", tmp->index);
 	return (tmp->sol);
 }
 
