@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/28 07:17:41 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/28 10:30:18 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (
 {
 	int n;
 
-	if (where > handle->size / 2)
+//	ft_printf("where = %d\n", where);
+	if (where > handle->sizea / 2)
 	{
-		n = handle->size - where - 1;
+		n = handle->sizea - where - 1;
 		while (n)
 		{
 			f(handle);
@@ -505,4 +506,6 @@ void					ft_sort_push_swap(t_push *handle, int algo_pass)
 		ft_algo_insert_a(handle);
 	if (algo_pass == 0)
 		ft_quick_sort_1(handle);
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 }

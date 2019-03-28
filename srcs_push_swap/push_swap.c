@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/27 13:42:42 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/28 10:36:41 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int						main(int argc, char **argv)
 		ft_fill_argv(handle);
 		if (ft_is_sort(handle->a, handle->sizea) == 0)
 			ft_sort_push_swap(handle, algo_pass);
-		ft_check_reduc(handle);
+		//ft_check_reduc(handle);
 		if (algo_pass != 0)
 			sol = ft_new_t_sol(sol);
 		if (!sol)
