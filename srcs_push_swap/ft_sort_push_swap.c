@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/28 12:13:16 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/30 10:20:42 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_find_this(int *tab, int size, int this)
 	return (-1);
 }
 
-static int			ft_find_bigger(int *tab, int size)
+int					ft_find_bigger(int *tab, int size)
 {
 	int i;
 	int ret;
@@ -42,13 +42,13 @@ static int			ft_find_bigger(int *tab, int size)
 	return (ret);
 }
 
-static int			ft_find_n_bigger(int *tab, int size, int beforethis)
+int			ft_find_n_bigger(int *tab, int size, int beforethis)
 {
 	int i;
 	int ret;
 
 	i = 0;
-	ret = tab[i];
+	ret = beforethis - 1;
 	while (i < size)
 	{
 		if (tab[i] > ret && tab[i] < beforethis)

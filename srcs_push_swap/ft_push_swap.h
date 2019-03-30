@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/28 12:33:29 by akremer          ###   ########.fr       */
+/*   Updated: 2019/03/30 10:02:20 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
-# define NB_ALGO 3
-# define NBR_OK 13
+# define NB_ALGO 1
+# define NBR_OK 3
 
 typedef struct		s_push
 {
@@ -60,12 +60,12 @@ void		ft_print_tab(int *tab, size_t size, char *name);
 void		ft_sort_push_swap(t_push *handle, int algo_pass);
 int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
 void		ft_check_reduc(t_push *handle);
-//Modifie le quick pas de int
 void		ft_quick_sort_1(t_push *handle);
-//Modifie le quick pas de int
 void		ft_algo_insert_a(t_push *handle);
 void		ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole);
 int			ft_find_this(int *tab, int size, int this);
 void		ft_algo_insert_b(t_push *handle);
+int			ft_find_n_bigger(int *tab, int size, int beforethis);
+int			ft_find_bigger(int *tab, int size);
 
 #endif
