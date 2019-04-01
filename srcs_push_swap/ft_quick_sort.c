@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/01 16:36:04 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/01 17:12:37 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,17 +196,24 @@ static void					ft_split_a(t_push *handle)
 	int		mid;
 	int		i;
 	int		size;
+	int		j;
 
+	j = 0;
 	i = 0;
 	size = handle->sizea - handle->ign;
 	mid = ft_find_mid(handle->a, handle->sizea - handle->ign);
 	while (i < size)
 	{
 		if (handle->a[0] < mid)
+		{
+			j++;
 			ft_push_a(handle);
+		}
 		else
 			ft_rotate_a(handle);
 		i++;
+//		if (j > size / 2)
+//			break ;
 	}
 }
 
@@ -215,7 +222,9 @@ static void					ft_split_b(t_push *handle)
 	int		mid;
 	int		i;
 	int		size;
+	int		j;
 
+	j = 0;
 	size = handle->sizeb;
 	i = 0;
 	mid = ft_find_mid(handle->b, handle->sizeb);
@@ -225,10 +234,15 @@ static void					ft_split_b(t_push *handle)
 	while (i < size)
 	{
 		if (handle->b[0] > mid)
+		{
 			ft_push_b(handle);
+			j++;
+		}
 		else
 			ft_rotate_b(handle);
 		i++;
+		if (j > size / 2)
+			break ;
 	}
 	if (handle->sizeb > NBR_OK)
 		ft_split_b(handle);
