@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/30 10:20:42 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/01 14:52:36 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ int			ft_find_this(int *tab, int size, int this)
 	int i;
 
 	i = 0;
+	ft_printf("this = %d\n", this);
 	while (i < size)
 	{
 		if (tab[i] == this)
+		{
 			return (i);
+		}
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
 int					ft_find_bigger(int *tab, int size)
@@ -83,28 +86,25 @@ void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (
 	}
 }
 
-static void			ft_wich_path2(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
+static void			ft_wich_path2(t_push *handle, int nb, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
 {
-	int n;
+	int where;
 
+	where = ft_find_this(handle->b, handle->sizeb, nb);
+//	ft_printf("next = %d\n", nb);
+//	ft_printf("where = %d\n", where);
 	if (where > handle->sizeb / 2)
 	{
-		n = handle->sizeb - where;
-		while (n)
-		{
+		while (ft_find_this(handle->b, handle->sizeb, nb) != pole)
 			f(handle);
-			n--;
-		}
 	}
 	else
 	{
-		n = where;
-		while (n != pole)
-		{
+		while (ft_find_this(handle->b, handle->sizeb, nb) != pole)
 			ft(handle);
-			n--;
-		}
 	}
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 }
 
 static void			ft_while_f(t_push *handle, int n, void (*f)(t_push *handle), void(*ft)(t_push *handle))
@@ -129,12 +129,42 @@ static void			ft_finish_him(t_push *handle)
 	while (handle->sizeb > 0)
 	{
 		if (soothsayer != 1)
-			next = ft_find_n_bigger(handle->b, handle->sizeb, max);
+			next = ft_find_n_bigger(handle->b, handle->sizeb, next);
 		else
 			soothsayer--;
-		ft_wich_path2(handle, ft_find_this(handle->b, handle->sizeb, next), &ft_reverse_rotate_b, &ft_rotate_b, 0);
+		ft_wich_path2(handle, next, &ft_reverse_rotate_b, &ft_rotate_b, 0);
 		ft_push_b(handle);
 	}
+}
+
+static int				ft_worst_numbers(t_push *handle)
+{
+	int		check;
+	int		act;
+	int		max;
+
+	max = ft_find_bigger(handle->a, handle->sizea);
+	check = 0;
+	if (ft_find_this(handle->a, handle->sizea, max) == 2)
+		check++;
+	act = ft_find_n_bigger(handle->a, handle->sizea, max);
+	if (ft_find_this(handle->a, handle->sizea, act) == 3)
+		check++;
+	max = act;
+	act = ft_find_n_bigger(handle->a, handle->sizea, max);
+	if (ft_find_this(handle->a, handle->sizea, act) == 4)
+		check++;
+	max = act;
+	act = ft_find_n_bigger(handle->a, handle->sizea, max);
+	if (ft_find_this(handle->a, handle->sizea, act) == 0)
+		check++;
+	max = act;
+	act = ft_find_n_bigger(handle->a, handle->sizea, max);
+	if (ft_find_this(handle->a, handle->sizea, act) == 1)
+		check++;
+	if (check == 5)
+		return (1);
+	return (0);
 }
 
 static void				ft_algo_perso_1(t_push *handle)
@@ -142,6 +172,12 @@ static void				ft_algo_perso_1(t_push *handle)
 	int max;
 	int where;
 
+	if (handle->sizea == 5)
+		if (ft_worst_numbers(handle) == 1)
+		{
+			ft_reverse_rotate_a(handle);
+			ft_reverse_rotate_a(handle);
+		}
 	max = ft_find_bigger(handle->a, handle->size);
 	where = ft_find_this(handle->a, handle->size, max);
 	ft_wich_path(handle, where, &ft_reverse_rotate_a, &ft_rotate_a ,-1);
@@ -500,12 +536,12 @@ static void				ft_quick_sort_2(t_push *handle)
 
 void					ft_sort_push_swap(t_push *handle, int algo_pass)
 {
+	if (algo_pass == 0)
+		ft_quick_sort_1(handle);
 	if (algo_pass == 1)
 		ft_algo_perso_1(handle);
 	if (algo_pass == 2)
 		ft_algo_insert_a(handle);
-	if (algo_pass == 0)
-		ft_quick_sort_1(handle);
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 }

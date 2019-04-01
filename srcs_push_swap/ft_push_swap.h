@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/30 10:38:16 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/01 14:34:34 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libft/includes/get_next_line.h"
 
 # define NB_ALGO 1
-# define NBR_OK 3
+# define NBR_OK 5
 
 typedef struct		s_push
 {
