@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/01 15:36:05 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/01 15:40:50 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,9 +261,9 @@ static int					ft_replace_head(int *tab, int size, int ign)
 			break;
 		i++;
 	}
-	ft_print_tab(tab, size, "tab");
-	ft_printf("ign = %d\n", ign);
-	ft_printf("i = %d\n", i);
+//	ft_print_tab(tab, size, "tab");
+//	ft_printf("ign = %d\n", ign);
+//	ft_printf("i = %d\n", i);
 //	sleep(10);
 	return (i);
 }
@@ -280,20 +280,20 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizeb > NBR_OK)
 		ft_split_b(handle);
-	ft_printf("\nApres split b!\n\n");
-	ft_print_tab(handle->a, handle->sizea, "handle->a");
-	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+//	ft_printf("\nApres split b!\n\n");
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizeb <= NBR_OK && handle->sizeb)
 		ft_algo_insert_b(handle);
-	ft_printf("\nApres insert !\n\n");
-	ft_print_tab(handle->a, handle->sizea, "handle->a");
-	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+//	ft_printf("\nApres insert !\n\n");
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 //	ft_printf("OU est la lenteur ?\n");
 		ft_wich_path(handle, ft_replace_head(handle->a, handle->sizea, handle->ign)
 				, &ft_reverse_rotate_a, &ft_rotate_a, -1);
-	ft_printf("\nApres 1th wich path !\n\n");
-	ft_print_tab(handle->a, handle->sizea, "handle->a");
-	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+//	ft_printf("\nApres 1th wich path !\n\n");
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 //	ft_printf("Gne\n");
 	if (handle->sizeb)
 		ft_put_b_on_a(handle, handle->sizeb);
@@ -303,10 +303,10 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_wich_path(handle, ft_find_this(handle->a, handle->sizea
 //				, ft_find_n(handle->a, handle->sizea, 0, handle->ign))
 //				, &ft_reverse_rotate_a, &ft_rotate_a, -1);
-	ft_printf("\nAvant la recursive !\n\n");
-	ft_print_tab(handle->a, handle->sizea, "handle->a");
-	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-	sleep(1);
+//	ft_printf("\nAvant la recursive !\n\n");
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+//	sleep(1);
 //	ft_printf("Tu passe ?\n");
 	if (!ft_is_sort(handle->a, handle->sizea) && !handle->sizeb)
 		ft_quick_sort_1(handle);
