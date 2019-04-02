@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/01 17:42:41 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 08:03:52 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
-# define NB_ALGO 1
 # define NBR_OK 13
 
 typedef struct		s_push
@@ -32,6 +31,7 @@ typedef struct		s_push
 	char			*hack;
 	char			**gnl;
 	int				ign;
+	int				low;
 }					t_push;
 
 typedef struct		s_sol
@@ -67,5 +67,7 @@ int			ft_find_this(int *tab, int size, int this);
 void		ft_algo_insert_b(t_push *handle);
 int			ft_find_n_bigger(int *tab, int size, int beforethis);
 int			ft_find_bigger(int *tab, int size);
+int			ft_find_low(t_push *handle);
+void		ft_put_b_on_a(t_push *handle, int how_many);
 
 #endif

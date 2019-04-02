@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/01 17:11:18 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 07:58:47 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 	handle->sizeb = 0;
 	handle->nb_ope = 0;
 	handle->ign = 0;
+	handle->low = ft_find_low(handle);
 	return (handle);
 }
 
@@ -104,7 +105,8 @@ int						main(int argc, char **argv)
 {
 	t_push	*handle;
 	t_sol	**sol;
-	int		algo_pass;
+	char	algo_pass;
+	char	nb_algo;
 
 	algo_pass = 0;
 	if (!(sol = (t_sol**)malloc(sizeof(t_sol*))))
@@ -114,7 +116,11 @@ int						main(int argc, char **argv)
 	sol[0]->next = NULL;
 	if (argc == 1)
 		return (0);
-	while (algo_pass < NB_ALGO)
+	if (argc < 100)
+		nb_algo = 3;
+	else
+		nb_algo = 1;
+	while (algo_pass < nb_algo)
 	{
 		handle = ft_fill_struc(argc, argv);
 		if (!handle)
@@ -122,7 +128,7 @@ int						main(int argc, char **argv)
 		ft_fill_argv(handle);
 		if (ft_is_sort(handle->a, handle->sizea) == 0)
 			ft_sort_push_swap(handle, algo_pass);
-		//ft_check_reduc(handle);
+//		ft_check_reduc(handle);
 		if (algo_pass != 0)
 			sol = ft_new_t_sol(sol);
 		if (!sol)

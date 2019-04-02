@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 14:19:02 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/25 06:48:34 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 08:27:01 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	ft_reverse_rotate_r_checker(t_check *handle)
 	ft_reverse_rotate_b_checker(handle);
 }
 
-void		ft_do_op_checker(t_check *handle)
+int			ft_do_op_checker(t_check *handle)
 {
 	int ope;
 
@@ -87,4 +87,5 @@ void		ft_do_op_checker(t_check *handle)
 		ft_reverse_rotate_r_checker(handle);
 	else
 		ft_print_error_checker();
+	return (ope);
 }

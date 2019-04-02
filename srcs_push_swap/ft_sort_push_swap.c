@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/01 16:36:06 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 07:39:35 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int			ft_find_this(int *tab, int size, int this)
 	int i;
 
 	i = 0;
-	ft_printf("this = %d\n", this);
 	while (i < size)
 	{
 		if (tab[i] == this)
@@ -254,6 +253,12 @@ void				ft_algo_insert_b(t_push *handle)
 	j = 0;
 	while (i <= handle->sizeb)
 	{
+		if (handle->b[0] == handle->low)
+		{
+			ft_put_b_on_a(handle, 1);
+			handle->low = ft_find_low(handle);
+			continue ;
+		}
 		if (!ft_is_nsort(handle->b, i))
 		{
 			if (handle->b[0] > handle->b[1])

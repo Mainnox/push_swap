@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/03/27 15:41:49 by akremer          ###   ########.fr        #
+#    Updated: 2019/04/02 08:17:30 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC_1 =		srcs_push_swap/ft_push_swap_ope.c			\
 SRC_2 =		srcs_checker/checker.c						\
 			srcs_checker/ft_checker_ope.c				\
 			srcs_checker/ft_tools_checker.c				\
+			srcs_checker/ft_visualizer.c				\
 			srcs_checker/ft_check_argv_checker.c		\
 			srcs_checker/ft_do_ope_checker.c
 

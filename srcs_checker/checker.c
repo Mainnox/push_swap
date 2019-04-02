@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/01 14:23:17 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 08:50:30 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int			main(int argc, char **argv)
 {
 	t_check *handle;
 	char *beautiful_tab;
+	int		ope;
+	int		slep;
 
 	beautiful_tab = "_________________________________________________";
 	if (argc == 1)
@@ -71,42 +73,46 @@ int			main(int argc, char **argv)
 	if (!handle)
 		ft_print_error_checker();
 	ft_fill_argv_checker(handle);
-		if (handle->option)
-			if (ft_strstr(handle->option, "v"))
+	if (handle->option)
+	{
+		if (ft_strstr(handle->option, "d"))
+			slep = ft_atoi(ft_strstr(handle->option, "d") + 1);
+		else
+			slep = 0;
+	}
+	if (handle->option)
+		if (ft_strstr(handle->option, "s"))
+		{
+			if (handle->sizea > 0)
 			{
-				if (handle->sizea > 0)
-				{
-				ft_printf("\n\t\tLa jolie pile a:\n%s\n", beautiful_tab);
-				ft_print_tab_checker(handle->a, handle->sizea, "tab->a");
-				ft_printf("%s\n", beautiful_tab);
-				}
-				if (handle->sizeb > 0)
-				{
-				ft_printf("\n\t\tLa tres jolie pile b:\n%s\n", beautiful_tab);
-				ft_print_tab_checker(handle->b, handle->sizeb, "tab->b");
-				ft_printf("%s\n", beautiful_tab);
-				}
+			ft_printf("\n\t\tStart::\n%s\n", beautiful_tab);
+			ft_print_tab_checker(handle->a, handle->sizea, "tab->a");
+			ft_printf("%s\n", beautiful_tab);
 			}
+		}
 	while (get_next_line(0, handle->gnl) > 0)
 	{
-		ft_do_op_checker(handle);
+		ope = ft_do_op_checker(handle);
 		if (handle->option)
-			if (ft_strstr(handle->option, "v"))
+			if(ft_strstr(handle->option, "v"))
+				ft_visualizer(handle, ope, slep);
+	}
+		if (handle->option)
+			if (ft_strstr(handle->option, "e"))
 			{
 				if (handle->sizea > 0)
 				{
-				ft_printf("\n\t\tLa jolie pile a:\n_________________________________________________\n");
+				ft_printf("\n\t\tPile a:\n_________________________________________________\n");
 				ft_print_tab_checker(handle->a, handle->sizea, "tab->a");
 				ft_printf("__________________________________________________\n");
 				}
 				if (handle->sizeb > 0)
 				{
-				ft_printf("\n\t\tLa tres jolie pile b:\n__________________________________________________\n");
+				ft_printf("\n\t\tPile b:\n__________________________________________________\n");
 				ft_print_tab_checker(handle->b, handle->sizeb, "tab->b");
 				ft_printf("__________________________________________________\n");
 				}
 			}
-	}
 	if (ft_is_sort_checker(handle))
 		ft_putchar_puissant("OK\n");
 	else

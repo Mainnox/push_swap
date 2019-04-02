@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/01 17:12:37 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 07:58:50 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,57 +198,33 @@ static void					ft_split_a(t_push *handle)
 	int		size;
 	int		j;
 
-	j = 0;
 	i = 0;
 	size = handle->sizea - handle->ign;
 	mid = ft_find_mid(handle->a, handle->sizea - handle->ign);
+	j = ft_how_many_less(handle->a, handle->sizea, mid);
 	while (i < size)
 	{
+		if (handle->a[0] == handle->low)
+		{
+			ft_rotate_a(handle);
+			handle->ign++;
+			handle->low = ft_find_low(handle);
+			continue ;
+		}
 		if (handle->a[0] < mid)
 		{
-			j++;
+			j--;
 			ft_push_a(handle);
 		}
 		else
 			ft_rotate_a(handle);
 		i++;
-//		if (j > size / 2)
-//			break ;
-	}
-}
-
-static void					ft_split_b(t_push *handle)
-{
-	int		mid;
-	int		i;
-	int		size;
-	int		j;
-
-	j = 0;
-	size = handle->sizeb;
-	i = 0;
-	mid = ft_find_mid(handle->b, handle->sizeb);
-//	ft_printf("Mid = %d\n", mid);
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-	while (i < size)
-	{
-		if (handle->b[0] > mid)
-		{
-			ft_push_b(handle);
-			j++;
-		}
-		else
-			ft_rotate_b(handle);
-		i++;
-		if (j > size / 2)
+		if (j <= 0)
 			break ;
 	}
-	if (handle->sizeb > NBR_OK)
-		ft_split_b(handle);
 }
 
-static void					ft_put_b_on_a(t_push *handle, int how_many)
+void						ft_put_b_on_a(t_push *handle, int how_many)
 {
 	int		i;
 
@@ -261,6 +237,44 @@ static void					ft_put_b_on_a(t_push *handle, int how_many)
 	}	
 	handle->ign += i;
 }
+
+static void					ft_split_b(t_push *handle)
+{
+	int		mid;
+	int		i;
+	int		size;
+	int		j;
+
+	size = handle->sizeb;
+	i = 0;
+	mid = ft_find_mid(handle->b, handle->sizeb);
+	j = ft_how_many_less(handle->b, handle->sizeb, mid);
+//	ft_printf("Mid = %d\n", mid);
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+	while (i < size)
+	{
+		if (handle->b[0] == handle->low)
+		{
+			ft_put_b_on_a(handle, 1);
+			handle->low = ft_find_low(handle);
+			continue ;
+		}
+		if (handle->b[0] > mid)
+		{
+			ft_push_b(handle);
+			j--;
+		}
+		else
+			ft_rotate_b(handle);
+		if (j <= 0)
+			break ;
+		i++;
+	}
+	if (handle->sizeb > NBR_OK)
+		ft_split_b(handle);
+}
+
 
 static int					ft_replace_head(int *tab, int size, int ign)
 {
@@ -280,6 +294,29 @@ static int					ft_replace_head(int *tab, int size, int ign)
 //	ft_printf("i = %d\n", i);
 //	sleep(10);
 	return (i);
+}
+
+int							ft_find_low(t_push *handle)
+{
+	int		low;
+	int		i;
+
+	i = 0;
+	low = handle->a[0];
+	while (i < handle->sizea - handle->ign)
+	{
+		if (low > handle->a[i])
+			low = handle->a[i];
+		i++;
+	}
+	i = 0;
+	while (i < handle->sizeb)
+	{
+		if (low > handle->b[i])
+			low = handle->b[i];
+		i++;
+	}
+	return (low);
 }
 
 void						ft_quick_sort_1(t_push *handle)
@@ -326,49 +363,3 @@ void						ft_quick_sort_1(t_push *handle)
 		ft_quick_sort_1(handle);
 //	ft_printf("Tu sort?\n");
 }
-
-/*static void				ft_quick_sort_1(t_push *handle)
-{
-	int		i;
-	int		j;
-	int		check;
-
-	check = 0;
-	j = 0;
-	i = 0;
-	if (handle->sizea <= NBR_OK && !ft_is_sort(handle->a, handle->sizea))
-	{
-		ft_algo_insert_a(handle);
-		check++;
-	}
-	if (handle->sizeb <= NBR_OK && handle->sizeb)
-	{
-		ft_algo_insert_b(handle);
-		while (handle->sizeb)
-		{
-			ft_push_b(handle);
-			ft_rotate_a(handle);
-			i++;
-		}
-		handle->ign += i;
-		i = 0;
-	}
-	if (check != 0)
-	{
-		j = handle->ign;
-		while (j)
-		{
-			ft_rotate_a(handle);
-			j--;
-		}
-		check = 0;
-	}
-	if (handle->sizeb > NBR_OK)
-		ft_reduc_b(handle);
-	if (handle->sizea > NBR_OK && !ft_is_sort(handle->a, handle->sizea))
-		ft_reduc_a(handle);
-	if (!ft_is_sort(handle->a, handle->sizea))
-		ft_quick_sort_1(handle);
-	ft_print_tab(handle->a, handle->sizea, "handle->a");
-	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-}*/
