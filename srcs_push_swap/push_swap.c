@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 07:58:47 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 11:51:53 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 	handle->sizeb = 0;
 	handle->nb_ope = 0;
 	handle->ign = 0;
-	handle->low = ft_find_low(handle);
+	handle->low = -2147483648;
 	return (handle);
 }
 
@@ -116,7 +116,7 @@ int						main(int argc, char **argv)
 	sol[0]->next = NULL;
 	if (argc == 1)
 		return (0);
-	if (argc < 100)
+	if (argc < 45)
 		nb_algo = 3;
 	else
 		nb_algo = 1;

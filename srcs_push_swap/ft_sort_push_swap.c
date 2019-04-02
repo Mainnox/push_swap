@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 07:39:35 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 11:49:01 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,6 +257,8 @@ void				ft_algo_insert_b(t_push *handle)
 		{
 			ft_put_b_on_a(handle, 1);
 			handle->low = ft_find_low(handle);
+			if (i != 2)
+				i--;
 			continue ;
 		}
 		if (!ft_is_nsort(handle->b, i))
