@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 12:05:24 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/02 14:36:01 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ static int					ft_find_mid(int *tab, int size)
 	while (i < size)
 	{
 		less = ft_how_many_less(tab, size, tab[i]);
-		if (less == size / 2 || less == (size / 2) + 1)
+		if (less == size / 2)
 			break ;
 		i++;
 	}
@@ -327,17 +327,14 @@ int							ft_find_low(t_push *handle)
 
 void						ft_quick_sort_1(t_push *handle)
 {
+	handle->low = ft_find_low(handle);
 	if (handle->sizea - handle->ign > 0)
 		ft_split_a(handle);
-//	ft_printf("\nApres split a !\n\n");
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 		ft_wich_path(handle, ft_replace_head(handle->a, handle->sizea, handle->ign)
 				, &ft_reverse_rotate_a, &ft_rotate_a, -1);
 //	ft_printf("\nApres 1th wich path !\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-	handle->low = ft_find_low(handle);
 //	ft_printf("handle->low = %d\n", handle->low);
 	if (handle->sizeb > NBR_OK)
 		ft_split_b(handle);
