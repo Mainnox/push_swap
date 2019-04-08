@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 14:36:01 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/08 09:45:48 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_push			*ft_make_save(t_push *handle)
 	j = 0;
 	size = handle->sizea - handle->ign;
 	i = 0;
-	if ((handle->sizea - handle->ign) <= NBR_OK)
+	if ((handle->sizea - handle->ign) <= handle->nbr_ok)
 		median = ft_find_bigger(handle->a, handle->sizea);
 	else
 		median = ft_find_mid(handle->a, handle->sizea, handle->ign);
@@ -100,7 +100,7 @@ static int					ft_find_mid(int *tab, int size, int ign)
 	int		to_find;
 	int		i;
 
-	if (size - ign <= NBR_OK)
+	if (size - ign <= handle->nbr_ok)
 		return (2147483647);
 	else
 		i = 0;
@@ -127,7 +127,7 @@ static int					ft_find_mid(int *tab, int size, int ign)
 	int		ret;
 
 	size -= ign;
-	if (size <= NBR_OK)
+	if (size <= handle->nbr_ok)
 		return (2147483647);
 	ret = ft_find_bigger(tab, size);
 	i = 0;
@@ -139,7 +139,7 @@ static int					ft_find_mid(int *tab, int size, int ign)
 	return (ret);
 }*/
 
-static int					ft_how_many_less(int *tab, int size, int nb)
+int					ft_how_many_less(int *tab, int size, int nb)
 {
 	int		ret;
 	int		i;
@@ -155,13 +155,13 @@ static int					ft_how_many_less(int *tab, int size, int nb)
 	return (ret);
 }
 
-static int					ft_find_mid(int *tab, int size)
+int							ft_find_mid(int *tab, int size, int nbr_ok)
 {
 	int		i;
 	int		less;
 
 	i = 0;
-	if (size <= NBR_OK)
+	if (size <= nbr_ok)
 		return (2147483647);
 	while (i < size)
 	{
@@ -200,22 +200,21 @@ static void					ft_split_a(t_push *handle)
 
 	i = 0;
 	size = handle->sizea - handle->ign;
-	mid = ft_find_mid(handle->a, handle->sizea - handle->ign);
+	if (!handle->progress)
+		handle->mid = ft_find_mid(handle->a, handle->sizea - handle->ign, handle->nbr_ok);
+	mid = handle->mid;
 	j = ft_how_many_less(handle->a, handle->sizea, mid);
-//	ft_printf("low = %d\n", handle->low);
 	while (i < size)
 	{
-//		if (handle->a[0] == handle->low)
-//		{
-//			ft_rotate_a(handle);
-//			handle->ign++;
-//			handle->low = ft_find_low(handle);
-//			continue ;
-//		}
 		if (handle->a[0] < mid)
 		{
 			j--;
 			ft_push_a(handle);
+		}
+		else if (handle->progress)
+		{
+			handle->progress = 0;
+			break ;
 		}
 		else
 			ft_rotate_a(handle);
@@ -248,7 +247,7 @@ static void					ft_split_b(t_push *handle)
 
 	size = handle->sizeb;
 	i = 0;
-	mid = ft_find_mid(handle->b, handle->sizeb);
+	mid = ft_find_mid(handle->b, handle->sizeb, handle->nbr_ok);
 	j = ft_how_many_less(handle->b, handle->sizeb, mid);
 //	ft_printf("Mid = %d\n", mid);
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
@@ -263,6 +262,7 @@ static void					ft_split_b(t_push *handle)
 		}
 		if (handle->b[0] > mid)
 		{
+			handle->progress++;
 			ft_push_b(handle);
 			j--;
 		}
@@ -272,8 +272,11 @@ static void					ft_split_b(t_push *handle)
 			break ;
 		i++;
 	}
-	if (handle->sizeb > NBR_OK)
+	if (handle->sizeb > handle->nbr_ok)
+	{
+//		handle->mid = ft_find_bigger(handle->b, handle->sizeb) + 1;
 		ft_split_b(handle);
+	}
 }
 
 
@@ -328,6 +331,9 @@ int							ft_find_low(t_push *handle)
 void						ft_quick_sort_1(t_push *handle)
 {
 	handle->low = ft_find_low(handle);
+//	ft_printf("\nDebut de quick_sort\n\n");
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizea - handle->ign > 0)
 		ft_split_a(handle);
 		ft_wich_path(handle, ft_replace_head(handle->a, handle->sizea, handle->ign)
@@ -335,19 +341,16 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_printf("\nApres 1th wich path !\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-//	ft_printf("handle->low = %d\n", handle->low);
-	if (handle->sizeb > NBR_OK)
+	if (handle->sizeb > handle->nbr_ok)
 		ft_split_b(handle);
 //	ft_printf("\nApres split b!\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-	if (handle->sizeb <= NBR_OK && handle->sizeb)
+	if (handle->sizeb <= handle->nbr_ok && handle->sizeb)
 		ft_algo_insert_b(handle);
 //	ft_printf("\nApres insert !\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-//	ft_printf("OU est la lenteur ?\n");
-//	sleep(5);
 //	ft_printf("Gne\n");
 	if (handle->sizeb)
 		ft_put_b_on_a(handle, handle->sizeb);
@@ -360,7 +363,7 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_printf("\nAvant la recursive !\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-//	sleep(1);
+//	sleep(7);
 //	ft_printf("Tu passe ?\n");
 	if (!ft_is_sort(handle->a, handle->sizea) && !handle->sizeb)
 		ft_quick_sort_1(handle);

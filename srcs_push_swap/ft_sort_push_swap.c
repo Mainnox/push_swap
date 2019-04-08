@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 11:49:01 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/08 09:43:18 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,7 +400,7 @@ static void				ft_reduc_a(t_push *handle)
 	j = 0;
 	size = handle->sizea - handle->ign;
 	i = 0;
-	if ((handle->sizea - handle->ign) <= NBR_OK)
+	if ((handle->sizea - handle->ign) <= handle->nbr_ok)
 		median = ft_find_bigger(handle->a, handle->sizea);
 	else
 		median = ft_find_mid(handle->a, handle->sizea, handle->ign);
@@ -460,12 +460,12 @@ static void				ft_quick_sort_1(t_push *handle)
 	check = 0;
 	j = 0;
 	i = 0;
-	if (handle->sizea <= NBR_OK && !ft_is_sort(handle->a, handle->sizea))
+	if (handle->sizea <= handle->nbr_ok && !ft_is_sort(handle->a, handle->sizea))
 	{
 		ft_algo_insert_a(handle);
 		check++;
 	}
-	if (handle->sizeb <= NBR_OK && handle->sizeb)
+	if (handle->sizeb <= handle->nbr_ok && handle->sizeb)
 	{
 		ft_algo_insert_b(handle);
 		while (handle->sizeb)
@@ -487,9 +487,9 @@ static void				ft_quick_sort_1(t_push *handle)
 		}
 		check = 0;
 	}
-	if (handle->sizeb > NBR_OK)
+	if (handle->sizeb > handle->nbr_ok)
 		ft_reduc_b(handle);
-	if (handle->sizea > NBR_OK && !ft_is_sort(handle->a, handle->sizea))
+	if (handle->sizea > handle->nbr_ok && !ft_is_sort(handle->a, handle->sizea))
 		ft_reduc_a(handle);
 	if (!ft_is_sort(handle->a, handle->sizea))
 		ft_quick_sort_1(handle);
@@ -506,12 +506,12 @@ static void				ft_quick_sort_2(t_push *handle)
 	check = 0;
 	j = 0;
 	i = 0;
-	if (handle->sizea <= NBR_OK && !ft_is_sort(handle->a, handle->sizea))
+	if (handle->sizea <= handle->nbr_ok && !ft_is_sort(handle->a, handle->sizea))
 	{
 		ft_algo_insert_a(handle);
 		check++;
 	}
-	if (handle->sizeb <= NBR_OK && handle->sizeb)
+	if (handle->sizeb <= handle->nbr_ok && handle->sizeb)
 	{
 		ft_algo_insert_b(handle);
 		while (handle->sizeb)
@@ -533,9 +533,9 @@ static void				ft_quick_sort_2(t_push *handle)
 		}
 		check = 0;
 	}
-	if (handle->sizeb > NBR_OK)
+	if (handle->sizeb > handle->nbr_ok)
 		ft_reduc_b_2(handle);
-	if (handle->sizea > NBR_OK && !ft_is_sort(handle->a, handle->sizea))
+	if (handle->sizea > handle->nbr_ok && !ft_is_sort(handle->a, handle->sizea))
 		ft_reduc_a_2(handle);
 	if (!ft_is_sort(handle->a, handle->sizea))
 		ft_quick_sort_2(handle);

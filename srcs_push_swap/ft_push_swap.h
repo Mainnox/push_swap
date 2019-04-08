@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 12:33:40 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/08 09:45:13 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
-# define NBR_OK 20
+# define NBR_OK 12
 
 typedef struct		s_push
 {
@@ -32,6 +32,9 @@ typedef struct		s_push
 	char			**gnl;
 	int				ign;
 	int				low;
+	int				progress;
+	int				mid;
+	int				nbr_ok;
 }					t_push;
 
 typedef struct		s_sol
@@ -52,6 +55,7 @@ void		ft_reverse_rotate_b(t_push *handle);
 void		ft_fill_sol(t_push *handle, t_sol **sol);
 char		*ft_print_the_best(t_sol **sol);
 void		ft_push_b(t_push *handle);
+int			ft_find_mid(int *tab, int size, int nbr_ok);
 void		ft_print_error(void);
 void		ft_fill_argv(t_push *handle);
 int			ft_atoi_push_swap(char *str);
@@ -69,5 +73,7 @@ int			ft_find_n_bigger(int *tab, int size, int beforethis);
 int			ft_find_bigger(int *tab, int size);
 int			ft_find_low(t_push *handle);
 void		ft_put_b_on_a(t_push *handle, int how_many);
+void		ft_sort_under_5(t_push *handle);
+int			ft_how_many_less(int *tab, int size, int nbr);
 
 #endif
