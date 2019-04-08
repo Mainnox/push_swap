@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/08 10:46:23 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/08 11:55:31 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,15 +260,11 @@ void				ft_algo_insert_b(t_push *handle)
 	{
 		if (handle->b[0] == max)
 		{
-//			ft_printf("Max dans le if = %d\n", max);
 			ft_push_b(handle);
 			max = ft_find_n_bigger(handle->b, handle->sizeb, max);
 			if (i != 2)
 				i--;
 			rotate++;
-//			ft_print_tab(handle->a, handle->sizea, "handle->a");
-//			ft_print_tab(handle->b, handle->sizeb, "handle->b");
-//			ft_printf("Max apres le reset = %d\n", max);
 			continue ;
 		}
 		if (handle->b[0] == handle->low)
