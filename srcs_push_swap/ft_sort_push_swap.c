@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/08 09:43:18 by akremer          ###   ########.fr       */
+/*   Updated: 2019/04/08 10:46:23 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,11 +248,29 @@ void				ft_algo_insert_b(t_push *handle)
 {
 	int		i;
 	int		j;
+	int		max;
+	int		rotate;
 
+	rotate = 0;
+	max = ft_find_bigger(handle->b, handle->sizeb);
 	i = 2;
 	j = 0;
+//	ft_printf("Max avant la boucle = %d\n", max);
 	while (i <= handle->sizeb)
 	{
+		if (handle->b[0] == max)
+		{
+//			ft_printf("Max dans le if = %d\n", max);
+			ft_push_b(handle);
+			max = ft_find_n_bigger(handle->b, handle->sizeb, max);
+			if (i != 2)
+				i--;
+			rotate++;
+//			ft_print_tab(handle->a, handle->sizea, "handle->a");
+//			ft_print_tab(handle->b, handle->sizeb, "handle->b");
+//			ft_printf("Max apres le reset = %d\n", max);
+			continue ;
+		}
 		if (handle->b[0] == handle->low)
 		{
 			ft_put_b_on_a(handle, 1);
@@ -284,6 +302,14 @@ void				ft_algo_insert_b(t_push *handle)
 		if (i < handle->sizeb)
 			ft_reverse_rotate_b(handle);
 		i++;
+	}
+	while (handle->sizeb)
+		ft_put_b_on_a(handle, 1);
+	handle->ign += rotate;
+	while (rotate)
+	{
+		ft_rotate_a(handle);
+		rotate--;
 	}
 }
 /*
