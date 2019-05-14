@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/08 12:58:53 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/14 16:07:19 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,9 @@ static void					ft_split_a(t_push *handle)
 			break ;
 		}
 		else
+		{
 			ft_rotate_a(handle);
+		}
 		i++;
 		if (j <= 0)
 			break ;
@@ -274,7 +276,7 @@ static void					ft_split_b(t_push *handle)
 	}
 	if (handle->sizeb > handle->nbr_ok)
 	{
-//		handle->mid = ft_find_bigger(handle->b, handle->sizeb) + 1;
+		handle->mid = ft_find_bigger(handle->b, handle->sizeb) + 1;
 		ft_split_b(handle);
 	}
 }
@@ -336,6 +338,7 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizea - handle->ign > 0)
 		ft_split_a(handle);
+	if (handle->tour != 0)
 		ft_wich_path(handle, ft_replace_head(handle->a, handle->sizea, handle->ign)
 				, &ft_reverse_rotate_a, &ft_rotate_a, -1);
 //	ft_printf("\nApres 1th wich path !\n\n");
@@ -343,6 +346,8 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizeb > handle->nbr_ok)
 		ft_split_b(handle);
+//	ft_printf("progress : %d\n", handle->progress);
+//	sleep (2);
 //	ft_printf("\nApres split b!\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
@@ -366,6 +371,9 @@ void						ft_quick_sort_1(t_push *handle)
 //	sleep(7);
 //	ft_printf("Tu passe ?\n");
 	if (!ft_is_sort(handle->a, handle->sizea) && !handle->sizeb)
+	{
+		handle->tour++;
 		ft_quick_sort_1(handle);
+	}
 //	ft_printf("Tu sort?\n");
 }

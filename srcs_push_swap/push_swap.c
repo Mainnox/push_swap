@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/08 10:27:37 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/14 14:28:07 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 	handle->ign = 0;
 	handle->progress = 0;
 	handle->mid = 0;
+	handle->tour = 0;
 	if (handle->size <= 250)
 		handle->nbr_ok = 12;
 	else

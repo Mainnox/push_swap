@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/08 09:45:13 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/14 14:26:45 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_push
 	int				progress;
 	int				mid;
 	int				nbr_ok;
+	int				tour;
 }					t_push;
 
 typedef struct		s_sol

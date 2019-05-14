@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 14:19:02 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 08:27:01 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/14 14:00:53 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int		ft_check_ope_checker(t_check *handle)
 		return (2);
 	else if (ft_strcmp(handle->gnl[0], "ss\n") == 0)
 		return (3);
-	else if (ft_strcmp(handle->gnl[0], "pa\n") == 0)
-		return (4);
 	else if (ft_strcmp(handle->gnl[0], "pb\n") == 0)
+		return (4);
+	else if (ft_strcmp(handle->gnl[0], "pa\n") == 0)
 		return (5);
 	else if (ft_strcmp(handle->gnl[0], "ra\n") == 0)
 		return (6);

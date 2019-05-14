@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/08 09:42:57 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/14 13:59:20 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		ft_push_b(t_push *handle)
 	handle->sizea++;
 	handle->sizeb--;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "pb\n", 3);
+	ft_realloc_push_swap(handle, "pa\n", 3);
 }
 void		ft_swap_a(t_push *handle)
 {
@@ -162,5 +162,5 @@ void		ft_push_a(t_push *handle)
 	handle->sizea--;
 	handle->sizeb++;
 	handle->nb_ope++;
-	ft_realloc_push_swap(handle, "pa\n", 3);
+	ft_realloc_push_swap(handle, "pb\n", 3);
 }
