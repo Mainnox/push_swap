@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/14 19:25:42 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/15 18:58:08 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,10 +210,11 @@ static void					ft_split_a(t_push *handle)
 		{
 			j--;
 			ft_push_a(handle);
+			if (handle->progress)
+			handle->progress--;
 		}
 		else if (handle->progress)
 		{
-			handle->progress = 0;
 			break ;
 		}
 		else
@@ -332,12 +333,38 @@ int							ft_find_low(t_push *handle)
 
 void						ft_quick_sort_1(t_push *handle)
 {
+	int		tmp;
+
+	tmp = 0;
 	handle->low = ft_find_low(handle);
 //	ft_printf("\nDebut de quick_sort\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-	if (handle->sizea - handle->ign > 0)
+	if (handle->sizea - handle->ign > 0 && !handle->progress)
 		ft_split_a(handle);
+//	if (handle->progress)
+//	{
+//		if (handle->progress > handle->nbr_ok)
+//		{
+//			tmp = handle->progress;
+//			while (tmp > handle->nbr_ok)
+//			{
+//				tmp = tmp;
+//				ft_printf("Hello there\n");
+//			}
+//			while (tmp)
+//			{
+//				ft_push_a(handle);
+//				tmp--;
+//			}
+//		}
+//	}
+//		else
+			while (handle->progress)
+			{
+				ft_push_a(handle);
+				handle->progress--;
+			}
 	if (handle->tour != 0)
 		ft_wich_path(handle, ft_replace_head(handle->a, handle->sizea, handle->ign)
 				, &ft_reverse_rotate_a, &ft_rotate_a, -1);
@@ -373,6 +400,8 @@ void						ft_quick_sort_1(t_push *handle)
 	if (!ft_is_sort(handle->a, handle->sizea) && !handle->sizeb)
 	{
 		handle->tour++;
+//		ft_printf("handle->progress = %d\n", handle->progress);
+//		if (handle->tour <= 4)
 		ft_quick_sort_1(handle);
 	}
 //	ft_printf("Tu sort?\n");
