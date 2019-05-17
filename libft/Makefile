@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 17:38:05 by akremer           #+#    #+#              #
-#    Updated: 2019/03/27 15:43:30 by akremer          ###   ########.fr        #
+#    Updated: 2019/05/17 12:10:40 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC =	ft_atoi.c				\
 		ft_memset.c				\
 		ft_bzero.c				\
 		ft_strlen.c				\
+		ft_tablen.c				\
 		ft_memccpy.c			\
 		ft_strdup.c				\
 		ft_memcmp.c				\
