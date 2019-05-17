@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 06:56:44 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/08 09:43:09 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 18:18:20 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,17 @@ void                ft_sort_under_5(t_push *handle)
     check = 0;
     mid = ft_find_mid_under_5(handle->b, handle->sizeb);
 //	ft_printf("Debut du sort\n");
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 //	ft_printf("Mid = %d\n", mid);
     if (handle->sizeb >= 4)
     {
         while (handle->sizeb > size + odd)
         {
+//	ft_print_tab(handle->a, handle->sizea, "handle->a");
+//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
+//	sleep(2);
             if (handle->b[0] < mid)
 			{
+//				ft_printf("PRQUE ? \n");
                 ft_push_b(handle);
 				check++;
 			}

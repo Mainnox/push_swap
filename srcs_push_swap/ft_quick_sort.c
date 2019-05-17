@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/17 15:56:46 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 18:45:47 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -395,7 +395,7 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
 	if (handle->sizeb <= handle->nbr_ok && handle->sizeb)
-		ft_algo_insert_b(handle);
+		ft_sort_under_5(handle);
 //	ft_printf("\nApres insert !\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
@@ -423,8 +423,7 @@ void						ft_quick_sort_1(t_push *handle)
 //			ft_printf("progres[%d] = %d\n", i, handle->progres[i]);
 			i++;
 		}
-
-//		if (handle->tour < 2)
+		if (handle->tour < 6)
 		ft_quick_sort_1(handle);
 	}
 //	ft_printf("Tu sort?\n");

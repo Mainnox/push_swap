@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 09:14:39 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/14 16:41:52 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 18:17:44 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		ft_push_b(t_push *handle)
 	int i;
 
 	i = handle->sizea;
-	if (handle->sizea == 0)
+	if (handle->sizeb == 0)
 		return ;
 	while (i > 0)
 	{

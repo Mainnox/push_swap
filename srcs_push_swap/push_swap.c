@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/17 16:15:22 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 18:30:28 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,27 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 	handle->progres = ft_init_progress();
 	handle->size_progres = 1;
 	if (handle->size <= 250)
-		handle->nbr_ok = 7;
+		handle->nbr_ok = 5;
 	else
-		handle->nbr_ok = 10;
+		handle->nbr_ok = 5;
 	handle->low = -2147483648;
 	return (handle);
 }
 
 void					ft_free_handle(t_push *handle)
 {
-	ft_memdel((void**)&handle->a);
-	ft_memdel((void**)&handle->b);
-	ft_memdel((void**)&handle->hack);
-	ft_memdel((void**)&handle);
+	free(handle->a);
+	handle->a = NULL;
+	free(handle->b);
+	handle->b = NULL;
+	free(handle->hack);
+	handle->hack = NULL;
+	free(handle);
+	handle = NULL;
+//	ft_memdel((void**)&handle->a);
+//	ft_memdel((void**)&handle->b);
+//	ft_memdel((void**)&handle->hack);
+//	ft_memdel((void**)&handle);
 }
 
 static t_sol			**ft_new_t_sol(t_sol **sol)
@@ -125,7 +133,7 @@ int						main(int argc, char **argv)
 	sol[0]->next = NULL;
 	if (argc == 1)
 		return (0);
-	if (argc < 1)
+	if (argc < 10)
 		nb_algo = 3;
 	else
 		nb_algo = 1;

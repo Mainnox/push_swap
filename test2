@@ -1,0 +1,503 @@
+handle->a[0] = 45
+handle->a[1] = 9
+handle->a[2] = 20
+handle->a[3] = 46
+handle->a[4] = 22
+handle->a[5] = 31
+handle->a[6] = 44
+handle->a[7] = 50
+handle->a[8] = 4
+handle->a[9] = 25
+handle->a[10] = 19
+handle->a[11] = 47
+handle->a[12] = 0
+handle->a[13] = 35
+handle->a[14] = 10
+handle->a[15] = 6
+handle->a[16] = 34
+handle->a[17] = 39
+handle->a[18] = 24
+handle->a[19] = 27
+handle->a[20] = 2
+handle->a[21] = 40
+handle->a[22] = 48
+handle->a[23] = 14
+handle->a[24] = 36
+handle->a[25] = 49
+handle->a[26] = 3
+handle->a[27] = 32
+handle->a[28] = 11
+handle->a[29] = 38
+handle->a[30] = 37
+handle->a[31] = 26
+handle->a[32] = 33
+handle->a[33] = 42
+handle->a[34] = 8
+handle->a[35] = 21
+handle->a[36] = 5
+handle->a[37] = 29
+handle->a[38] = 13
+handle->a[39] = 16
+handle->a[40] = 17
+handle->a[41] = 15
+handle->a[42] = 23
+handle->a[43] = 28
+handle->a[44] = 18
+handle->a[45] = 43
+handle->a[46] = 30
+handle->a[47] = 12
+handle->a[48] = 7
+handle->a[49] = 1
+handle->a[50] = 41
+handle->b[0] = -5
+handle->b[1] = -38
+handle->b[2] = -12
+handle->b[3] = -13
+handle->b[4] = -40
+handle->b[5] = -4
+handle->b[6] = -47
+handle->b[7] = -49
+handle->b[8] = -21
+handle->b[9] = -25
+handle->b[10] = -19
+handle->b[11] = -23
+handle->b[12] = -1
+handle->b[13] = -20
+handle->b[14] = -41
+handle->b[15] = -15
+handle->b[16] = -30
+handle->b[17] = -46
+handle->b[18] = -33
+handle->b[19] = -45
+handle->b[20] = -6
+handle->b[21] = -18
+handle->b[22] = -39
+handle->b[23] = -9
+handle->b[24] = -29
+handle->b[25] = -17
+handle->b[26] = -2
+handle->b[27] = -42
+handle->b[28] = -35
+handle->b[29] = -43
+handle->b[30] = -14
+handle->b[31] = -34
+handle->b[32] = -11
+handle->b[33] = -7
+handle->b[34] = -36
+handle->b[35] = -24
+handle->b[36] = -26
+handle->b[37] = -37
+handle->b[38] = -8
+handle->b[39] = -27
+handle->b[40] = -22
+handle->b[41] = -44
+handle->b[42] = -10
+handle->b[43] = -48
+handle->b[44] = -16
+handle->b[45] = -28
+handle->b[46] = -3
+handle->b[47] = -50
+handle->b[48] = -32
+handle->b[49] = -31
+handle->a[0] = -3
+handle->a[1] = -16
+handle->a[2] = -10
+handle->a[3] = -22
+handle->a[4] = -8
+handle->a[5] = -24
+handle->a[6] = -7
+handle->a[7] = -11
+handle->a[8] = -14
+handle->a[9] = -2
+handle->a[10] = -17
+handle->a[11] = -9
+handle->a[12] = -18
+handle->a[13] = -6
+handle->a[14] = -15
+handle->a[15] = -20
+handle->a[16] = -1
+handle->a[17] = -23
+handle->a[18] = -19
+handle->a[19] = -21
+handle->a[20] = -4
+handle->a[21] = -13
+handle->a[22] = -12
+handle->a[23] = -5
+handle->a[24] = 45
+handle->a[25] = 9
+handle->a[26] = 20
+handle->a[27] = 46
+handle->a[28] = 22
+handle->a[29] = 31
+handle->a[30] = 44
+handle->a[31] = 50
+handle->a[32] = 4
+handle->a[33] = 25
+handle->a[34] = 19
+handle->a[35] = 47
+handle->a[36] = 0
+handle->a[37] = 35
+handle->a[38] = 10
+handle->a[39] = 6
+handle->a[40] = 34
+handle->a[41] = 39
+handle->a[42] = 24
+handle->a[43] = 27
+handle->a[44] = 2
+handle->a[45] = 40
+handle->a[46] = 48
+handle->a[47] = 14
+handle->a[48] = 36
+handle->a[49] = 49
+handle->a[50] = 3
+handle->a[51] = 32
+handle->a[52] = 11
+handle->a[53] = 38
+handle->a[54] = 37
+handle->a[55] = 26
+handle->a[56] = 33
+handle->a[57] = 42
+handle->a[58] = 8
+handle->a[59] = 21
+handle->a[60] = 5
+handle->a[61] = 29
+handle->a[62] = 13
+handle->a[63] = 16
+handle->a[64] = 17
+handle->a[65] = 15
+handle->a[66] = 23
+handle->a[67] = 28
+handle->a[68] = 18
+handle->a[69] = 43
+handle->a[70] = 30
+handle->a[71] = 12
+handle->a[72] = 7
+handle->a[73] = 1
+handle->a[74] = 41
+handle->a[75] = -50
+handle->b[0] = -40
+handle->b[1] = -47
+handle->b[2] = -49
+handle->b[3] = -25
+handle->b[4] = -41
+handle->b[5] = -30
+handle->b[6] = -46
+handle->b[7] = -33
+handle->b[8] = -45
+handle->b[9] = -39
+handle->b[10] = -29
+handle->b[11] = -42
+handle->b[12] = -35
+handle->b[13] = -43
+handle->b[14] = -34
+handle->b[15] = -36
+handle->b[16] = -26
+handle->b[17] = -37
+handle->b[18] = -27
+handle->b[19] = -44
+handle->b[20] = -48
+handle->b[21] = -28
+handle->b[22] = -32
+handle->b[23] = -31
+handle->b[24] = -38
+handle->a[0] = -31
+handle->a[1] = -32
+handle->a[2] = -28
+handle->a[3] = -27
+handle->a[4] = -26
+handle->a[5] = -36
+handle->a[6] = -34
+handle->a[7] = -35
+handle->a[8] = -29
+handle->a[9] = -33
+handle->a[10] = -30
+handle->a[11] = -25
+handle->a[12] = -3
+handle->a[13] = -16
+handle->a[14] = -10
+handle->a[15] = -22
+handle->a[16] = -8
+handle->a[17] = -24
+handle->a[18] = -7
+handle->a[19] = -11
+handle->a[20] = -14
+handle->a[21] = -2
+handle->a[22] = -17
+handle->a[23] = -9
+handle->a[24] = -18
+handle->a[25] = -6
+handle->a[26] = -15
+handle->a[27] = -20
+handle->a[28] = -1
+handle->a[29] = -23
+handle->a[30] = -19
+handle->a[31] = -21
+handle->a[32] = -4
+handle->a[33] = -13
+handle->a[34] = -12
+handle->a[35] = -5
+handle->a[36] = 45
+handle->a[37] = 9
+handle->a[38] = 20
+handle->a[39] = 46
+handle->a[40] = 22
+handle->a[41] = 31
+handle->a[42] = 44
+handle->a[43] = 50
+handle->a[44] = 4
+handle->a[45] = 25
+handle->a[46] = 19
+handle->a[47] = 47
+handle->a[48] = 0
+handle->a[49] = 35
+handle->a[50] = 10
+handle->a[51] = 6
+handle->a[52] = 34
+handle->a[53] = 39
+handle->a[54] = 24
+handle->a[55] = 27
+handle->a[56] = 2
+handle->a[57] = 40
+handle->a[58] = 48
+handle->a[59] = 14
+handle->a[60] = 36
+handle->a[61] = 49
+handle->a[62] = 3
+handle->a[63] = 32
+handle->a[64] = 11
+handle->a[65] = 38
+handle->a[66] = 37
+handle->a[67] = 26
+handle->a[68] = 33
+handle->a[69] = 42
+handle->a[70] = 8
+handle->a[71] = 21
+handle->a[72] = 5
+handle->a[73] = 29
+handle->a[74] = 13
+handle->a[75] = 16
+handle->a[76] = 17
+handle->a[77] = 15
+handle->a[78] = 23
+handle->a[79] = 28
+handle->a[80] = 18
+handle->a[81] = 43
+handle->a[82] = 30
+handle->a[83] = 12
+handle->a[84] = 7
+handle->a[85] = 1
+handle->a[86] = 41
+handle->a[87] = -50
+handle->a[88] = -49
+handle->a[89] = -48
+handle->b[0] = -38
+handle->b[1] = -40
+handle->b[2] = -47
+handle->b[3] = -41
+handle->b[4] = -46
+handle->b[5] = -45
+handle->b[6] = -39
+handle->b[7] = -42
+handle->b[8] = -43
+handle->b[9] = -37
+handle->b[10] = -44
+pb
+ra
+pb
+ra
+ra
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+ra
+ra
+pb
+pb
+pb
+ra
+ra
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+ra
+ra
+pb
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+ra
+ra
+ra
+pb
+pb
+pb
+pb
+pb
+ra
+ra
+pb
+pb
+pb
+ra
+pb
+ra
+pb
+ra
+pb
+ra
+ra
+pb
+pb
+pb
+ra
+pb
+pa
+rb
+pa
+pa
+rb
+pa
+rb
+rb
+pa
+rb
+pa
+pa
+pa
+pa
+rb
+pa
+rb
+rb
+rb
+rb
+pa
+pa
+rb
+pa
+rb
+pa
+pa
+rb
+rb
+rb
+pa
+rb
+pa
+pa
+rb
+pa
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+rb
+pa
+pa
+ra
+rb
+rb
+rb
+rb
+rb
+pa
+ra
+pa
+rb
+pa
+rb
+pa
+rb
+rb
+pa
+rb
+pa
+rb
+pa
+pa
+pa
+rb
+pa
+rb
+pa
+ra
+pa
+pa
+pa
+pa
+pa
+pa
+ra
+pa
+pa
+ra
+pa
+ra
+pa
+rb
+rb
+pa
+rrb
+sb
+pa
+ra
+pa
+ra
+pa
+ra
