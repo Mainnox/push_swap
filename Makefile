@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/04/08 06:59:03 by akremer          ###   ########.fr        #
+#    Updated: 2019/05/17 12:46:57 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_1 =		srcs_push_swap/ft_push_swap_ope.c			\
 			srcs_push_swap/ft_tools.c					\
 			srcs_push_swap/ft_check_reduc.c				\
 			srcs_push_swap/ft_sort_push_swap.c			\
+			srcs_push_swap/ft_progress.c				\
 			srcs_push_swap/ft_quick_sort.c				\
 			srcs_push_swap/ft_sol.c						\
 			srcs_push_swap/ft_short_sort.c				\

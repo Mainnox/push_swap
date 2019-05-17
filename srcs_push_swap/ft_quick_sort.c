@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/15 18:58:08 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 15:56:46 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,8 +200,7 @@ static void					ft_split_a(t_push *handle)
 
 	i = 0;
 	size = handle->sizea - handle->ign;
-	if (!handle->progress)
-		handle->mid = ft_find_mid(handle->a, handle->sizea - handle->ign, handle->nbr_ok);
+	handle->mid = ft_find_mid(handle->a, handle->sizea - handle->ign, handle->nbr_ok);
 	mid = handle->mid;
 	j = ft_how_many_less(handle->a, handle->sizea, mid);
 	while (i < size)
@@ -210,12 +209,6 @@ static void					ft_split_a(t_push *handle)
 		{
 			j--;
 			ft_push_a(handle);
-			if (handle->progress)
-			handle->progress--;
-		}
-		else if (handle->progress)
-		{
-			break ;
 		}
 		else
 		{
@@ -247,7 +240,9 @@ static void					ft_split_b(t_push *handle)
 	int		i;
 	int		size;
 	int		j;
+	int		progres;
 
+	progres = 0;
 	size = handle->sizeb;
 	i = 0;
 	mid = ft_find_mid(handle->b, handle->sizeb, handle->nbr_ok);
@@ -265,7 +260,7 @@ static void					ft_split_b(t_push *handle)
 		}
 		if (handle->b[0] > mid)
 		{
-			handle->progress++;
+			progres++;
 			ft_push_b(handle);
 			j--;
 		}
@@ -275,6 +270,8 @@ static void					ft_split_b(t_push *handle)
 			break ;
 		i++;
 	}
+	if (progres != 0)
+		ft_add_progress(handle, progres);
 	if (handle->sizeb > handle->nbr_ok)
 	{
 		handle->mid = ft_find_bigger(handle->b, handle->sizeb) + 1;
@@ -340,7 +337,15 @@ void						ft_quick_sort_1(t_push *handle)
 //	ft_printf("\nDebut de quick_sort\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-	if (handle->sizea - handle->ign > 0 && !handle->progress)
+//	ft_printf("size = %d\n", handle->size_progres);
+//	int i = 0;
+//	while (i < handle->size_progres)
+//	{
+//		ft_printf("handle->progress[%d] = %d\n", i, handle->progres[i]);
+//		i++;
+//	}
+//	ft_printf("handle->progres[0] = %d\n", handle->progres[0]);
+	if (handle->sizea - handle->ign > 0 && handle->progres[0] <= 0)
 		ft_split_a(handle);
 //	if (handle->progress)
 //	{
@@ -360,11 +365,22 @@ void						ft_quick_sort_1(t_push *handle)
 //		}
 //	}
 //		else
-			while (handle->progress)
-			{
-				ft_push_a(handle);
-				handle->progress--;
-			}
+	else
+	{
+//		ft_printf("handle->progres[handle->size_progres - 1] = %d\n", handle->progres[handle->size_progres - 1]);
+		int m = 0;
+		while (m < handle->size_progres)
+		{
+//			ft_printf("progres[%d] = %d\n", m, handle->progres[m]);
+			m++;
+		}
+		while (handle->progres[handle->size_progres - 2])
+		{
+			ft_push_a(handle);
+			handle->progres[handle->size_progres - 2]--;
+		}
+		ft_realloc_progress(handle, 0);
+	}
 	if (handle->tour != 0)
 		ft_wich_path(handle, ft_replace_head(handle->a, handle->sizea, handle->ign)
 				, &ft_reverse_rotate_a, &ft_rotate_a, -1);
@@ -401,7 +417,14 @@ void						ft_quick_sort_1(t_push *handle)
 	{
 		handle->tour++;
 //		ft_printf("handle->progress = %d\n", handle->progress);
-//		if (handle->tour <= 4)
+		int i = 0;
+		while (i < handle->size_progres)
+		{
+//			ft_printf("progres[%d] = %d\n", i, handle->progres[i]);
+			i++;
+		}
+
+//		if (handle->tour < 2)
 		ft_quick_sort_1(handle);
 	}
 //	ft_printf("Tu sort?\n");

@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/15 17:18:18 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 16:15:22 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ static t_push				*ft_fill_struc(int argc, char **argv)
 	handle->progress = 0;
 	handle->mid = 0;
 	handle->tour = 0;
+	handle->progres = ft_init_progress();
+	handle->size_progres = 1;
 	if (handle->size <= 250)
-		handle->nbr_ok = 12;
+		handle->nbr_ok = 7;
 	else
-		handle->nbr_ok = 25;
+		handle->nbr_ok = 10;
 	handle->low = -2147483648;
 	return (handle);
 }

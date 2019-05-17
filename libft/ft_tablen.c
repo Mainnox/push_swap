@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:08:11 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/17 12:30:48 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 14:17:16 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int			ft_tablen(int *tab, int stop)
 {
 	int		i;
 
-	i = 1;
+	i = 0;
 	while (tab[i] != stop)
 		i++;
-	return (i);
+	return (i + 1);
 }

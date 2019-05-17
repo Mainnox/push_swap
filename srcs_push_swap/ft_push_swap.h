@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/14 14:26:45 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/17 14:34:40 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include "../libft/includes/get_next_line.h"
 
 # define NBR_OK 12
+
+typedef struct		s_know
+{
+	int				how_many;
+	struct s_know	*next;
+}					t_know;
 
 typedef struct		s_push
 {
@@ -36,6 +42,8 @@ typedef struct		s_push
 	int				mid;
 	int				nbr_ok;
 	int				tour;
+	int				*progres;
+	int				size_progres;
 }					t_push;
 
 typedef struct		s_sol
@@ -76,5 +84,23 @@ int			ft_find_low(t_push *handle);
 void		ft_put_b_on_a(t_push *handle, int how_many);
 void		ft_sort_under_5(t_push *handle);
 int			ft_how_many_less(int *tab, int size, int nbr);
+
+/*\
+ *			Progress's functions
+\*/
+
+int			*ft_init_progress(void);
+int			ft_realloc_progress(t_push *handle, char wich);
+void		ft_add_progress(t_push *handle, int new);
+
+/*\
+ *			Know's functions
+\*/
+
+//void		ft_free_last(t_know **know);
+//int			ft_add_know(t_know **know, int how_many);
+//t_know		**ft_init_know(void);
+//t_know		*ft_go_to_last_know(t_know **know);
+//void		ft_swap_know(t_push *handle, t_know **know);
 
 #endif
