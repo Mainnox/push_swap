@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/05/17 12:46:57 by akremer          ###   ########.fr        #
+#    Updated: 2019/05/17 17:02:11 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,5 +73,9 @@ save: fclean
 
 test: all
 	@./$(NAME) $(ARG)
+
+leaks1: fclean $(OBJ_1) lib
+	@gcc -Wall -g $(OBJ_1) $(LIB) -o $(NAME_1)
+	@valgrind --leak-check=yes ./$(NAME_1)
 
 .PHONY: clean fclean save $(NAME_1) $(NAME_2) re all lib
