@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:01:44 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/17 15:44:19 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:34:56 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int			ft_realloc_progress(t_push *handle, char wich)
 
 	if (wich == 1)
 	{
-//		ft_printf("REALLOC + 1\n");
 		size = handle->size_progres;
 		if (!(tmp = (int*)malloc(sizeof(int) * size + 1)))
 			return (-1);
@@ -40,7 +39,6 @@ int			ft_realloc_progress(t_push *handle, char wich)
 	}
 	if (wich == 0)
 	{
-//		ft_printf("REALLOC - 1\n");
 		size = handle->size_progres;
 		if (!(tmp = (int*)malloc(sizeof(int) * size - 1)))
 			return (-1);
@@ -59,6 +57,5 @@ void		ft_add_progress(t_push *handle, int new)
 
 	if (!ft_realloc_progress(handle, 1))
 		ft_print_error();
-//	ft_printf("new = %d\n", new);
 	handle->progres[handle->size_progres - 2] = new;
 }

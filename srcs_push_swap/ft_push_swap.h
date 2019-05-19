@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:07:28 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:34:39 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int			ft_is_sort(int *tab, int size);
 void		ft_print_tab(int *tab, size_t size, char *name);
 void		ft_sort_push_swap(t_push *handle, int algo_pass);
 int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
-void		ft_check_reduc(t_push *handle);
 void		ft_quick_sort_1(t_push *handle);
 void		ft_algo_insert_a(t_push *handle);
 void		ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole);
