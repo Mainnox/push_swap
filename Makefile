@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/05/19 18:47:24 by akremer          ###   ########.fr        #
+#    Updated: 2019/05/19 18:49:32 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ lib:
 	@make -C ./libft/
 
 save: fclean
+	@rm -rf test
 	@git add *
 	@git commit -m "Sauvegarde auto !"
 	@git push
