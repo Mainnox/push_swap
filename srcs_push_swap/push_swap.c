@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 15:33:53 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:09:37 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,74 +69,28 @@ void					ft_free_handle(t_push *handle)
 //	ft_memdel((void**)&handle);
 }
 
-static t_sol			**ft_new_t_sol(t_sol **sol)
-{
-	t_sol	*new;
-	t_sol	*tmp;
-	int		i;
-
-	i = 1;
-	tmp = *sol;
-	if (!(new = (t_sol*)malloc(sizeof(t_sol))))
-		return (NULL);
-	if (tmp)
-		while (tmp->next && i++)
-			tmp = tmp->next;
-	new->index = i;
-	new->nb_ope = 0;
-	new->sol = NULL;
-	new->next = NULL;
-	if (tmp)
-		tmp->next = new;
-	else
-		tmp = new;
-	*sol = tmp;
-	return (sol);
-}
-
 void					ft_print_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(0);
 }
 
-static void				ft_free_sol(t_sol **sol)
-{
-	t_sol *tmp;
-	t_sol *tmp2;
-
-	tmp = *sol;
-	while (tmp)
-	{
-		ft_memdel((void**)&tmp->sol);
-		tmp2 = tmp->next;
-		free(tmp);
-		tmp = tmp2;
-		tmp2 = NULL;
-	}
-	tmp = NULL;
-	free(sol);
-}
-
 int						main(int argc, char **argv)
 {
 	t_push	*handle;
-	t_sol	**sol;
+	char	**sol;
 	char	algo_pass;
 	char	nb_algo;
 
 	algo_pass = 0;
-	if (!(sol = (t_sol**)malloc(sizeof(t_sol*))))
-		ft_print_error();
-	if (!(*sol = (t_sol*)malloc(sizeof(t_sol))))
-		ft_print_error();
-	sol[0]->next = NULL;
 	if (argc == 1)
 		return (0);
 	if (argc < 10)
 		nb_algo = 3;
 	else
 		nb_algo = 1;
+	sol = ft_init_sol(nb_algo);
+//	ft_printf("%d\n", nb_algo);
 	while (algo_pass < nb_algo)
 	{
 		handle = ft_fill_struc(argc, argv);
@@ -145,16 +99,13 @@ int						main(int argc, char **argv)
 		ft_fill_argv(handle);
 		if (ft_is_sort(handle->a, handle->sizea) == 0)
 			ft_sort_push_swap(handle, algo_pass);
-//		ft_check_reduc(handle);
-		if (algo_pass != 0)
-			sol = ft_new_t_sol(sol);
-		if (!sol)
-			ft_print_error();
-		ft_fill_sol(handle, sol);
+		ft_add_sol(sol, handle->hack, algo_pass);
 		ft_free_handle(handle);
 		algo_pass++;
 	}
-	ft_printf("%s", ft_print_the_best(sol));
-	ft_free_sol(sol);
+//	ft_printf("Coucou ?\n");
+//	ft_printf("%s", sol[0]);
+	ft_printf("%s", ft_print_best_sol(sol, nb_algo));
+	ft_free_sol(sol, nb_algo);
 	return (0);
 }

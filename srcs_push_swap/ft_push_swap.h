@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 14:41:10 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:07:28 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,6 @@ typedef struct		s_push
 	int				size_progres;
 }					t_push;
 
-typedef struct		s_sol
-{
-	int				index;
-	int				nb_ope;
-	char			*sol;
-	struct s_sol	*next;
-}					t_sol;
-
 void		ft_swap_a(t_push *handle);
 void		ft_rotate_a(t_push *handle);
 void		ft_reverse_rotate_a(t_push *handle);
@@ -61,8 +53,6 @@ void		ft_push_a(t_push *handle);
 void		ft_swap_b(t_push *handle);
 void		ft_rotate_b(t_push *handle);
 void		ft_reverse_rotate_b(t_push *handle);
-void		ft_fill_sol(t_push *handle, t_sol **sol);
-char		*ft_print_the_best(t_sol **sol);
 void		ft_push_b(t_push *handle);
 int			ft_find_mid(int *tab, int size, int nbr_ok);
 void		ft_print_error(void);
@@ -92,6 +82,15 @@ int			ft_how_many_less(int *tab, int size, int nbr);
 int			*ft_init_progress(void);
 int			ft_realloc_progress(t_push *handle, char wich);
 void		ft_add_progress(t_push *handle, int new);
+
+/*\
+ *			Sol's functions
+\*/
+
+void		ft_free_sol(char **sol, char nb_algo);
+char		*ft_print_best_sol(char **sol, char nb_algo);
+void		ft_add_sol(char **sol, char *hack, char algo_pass);
+char		**ft_init_sol(char nb_algo);
 
 /*\
  *			Know's functions
