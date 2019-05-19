@@ -6,13 +6,13 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:56:18 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/14 16:44:17 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 16:18:40 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k)
+/*int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k)
 {
 	char	*hack2;
 	size_t	size;
@@ -26,6 +26,17 @@ int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k)
 	if (handle->hack)
 		ft_strcpy(hack2, handle->hack);
 	handle->hack = ft_strjoin(hack2, ope);
+	return (1);
+}*/
+
+int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k)
+{
+	char *hack2;
+
+	hack2 = ft_strjoin(handle->hack, ope);
+	if (handle->hack)
+		free(handle->hack);
+	handle->hack = hack2;
 	return (1);
 }
 
