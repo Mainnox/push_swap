@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/05/19 18:37:47 by akremer          ###   ########.fr        #
+#    Updated: 2019/05/19 18:47:24 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,16 +41,16 @@ OBJ_1 = $(SRC_1:%.c=%.o)
 
 OBJ_2 = $(SRC_2:%.c=%.o)
 
-FLAGS = -Wall -Werror -Wextra -I
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME_1) $(NAME_2)
 
 
 $(NAME_1): $(OBJ_1) lib
-	@gcc $(OBJ_1) $(LIB) -o $(NAME_1)
+	@gcc $(FLAGS) $(OBJ_1) $(LIB) -o $(NAME_1)
 
 $(NAME_2): $(OBJ_2) lib
-	@gcc $(OBJ_2) $(LIB) -o $(NAME_2)
+	@gcc $(FLAGS) $(OBJ_2) $(LIB) -o $(NAME_2)
 
 clean: 
 	@rm -rf $(OBJ_1) && make -C ./libft/ clean
@@ -77,4 +77,8 @@ leaks1: fclean $(OBJ_1) lib
 	@gcc -Wall -g $(OBJ_1) $(LIB) -o $(NAME_1)
 	@valgrind --leak-check=yes ./$(NAME_1)
 
-.PHONY: clean fclean save $(NAME_1) $(NAME_2) re all lib
+leaks2: fclean $(OBJ_2) lib
+	@gcc -Wall -g $(OBJ_2) $(LIB) -o $(NAME_2)
+	@valgrind --leak-check=yes ./$(NAME_2)
+
+.PHONY: clean fclean save $(NAME_1) $(NAME_2) re all lib leaks1 leaks2
