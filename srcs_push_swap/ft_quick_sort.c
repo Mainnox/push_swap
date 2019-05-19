@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/17 18:45:47 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 15:34:16 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,9 +321,13 @@ int							ft_find_low(t_push *handle)
 			low = handle->b[i];
 		i++;
 	}
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-//	ft_printf("low = %d\n", low);
+//	if (handle->tour == 1)
+//	{
+//		ft_print_tab(handle->a, handle->sizea, "handle->a");
+//		ft_print_tab(handle->b, handle->sizeb, "handle->b");
+//		ft_printf("handle->low = %d\n", handle->low);
+//		ft_printf("low = %d\n", low);
+//	}
 //	sleep(2);
 	return (low);
 }
@@ -333,7 +337,11 @@ void						ft_quick_sort_1(t_push *handle)
 	int		tmp;
 
 	tmp = 0;
-	handle->low = ft_find_low(handle);
+	//ft_printf("handle->low = %d\n", handle->low);
+	if (!ft_find_this(handle->a, handle->sizea - handle->ign, handle->low)
+			&& !ft_find_this(handle->b, handle->sizeb, handle->low))
+		handle->low = ft_find_low(handle);
+	//ft_printf("handle->low = %d\n", handle->low);
 //	ft_printf("\nDebut de quick_sort\n\n");
 //	ft_print_tab(handle->a, handle->sizea, "handle->a");
 //	ft_print_tab(handle->b, handle->sizeb, "handle->b");
@@ -423,7 +431,7 @@ void						ft_quick_sort_1(t_push *handle)
 //			ft_printf("progres[%d] = %d\n", i, handle->progres[i]);
 			i++;
 		}
-		if (handle->tour < 6)
+//		if (handle->tour < 2)
 		ft_quick_sort_1(handle);
 	}
 //	ft_printf("Tu sort?\n");
