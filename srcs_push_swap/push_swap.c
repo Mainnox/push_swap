@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:09:37 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:43:37 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,6 @@ void					ft_free_handle(t_push *handle)
 	handle->hack = NULL;
 	free(handle);
 	handle = NULL;
-//	ft_memdel((void**)&handle->a);
-//	ft_memdel((void**)&handle->b);
-//	ft_memdel((void**)&handle->hack);
-//	ft_memdel((void**)&handle);
 }
 
 void					ft_print_error(void)
@@ -90,7 +86,6 @@ int						main(int argc, char **argv)
 	else
 		nb_algo = 1;
 	sol = ft_init_sol(nb_algo);
-//	ft_printf("%d\n", nb_algo);
 	while (algo_pass < nb_algo)
 	{
 		handle = ft_fill_struc(argc, argv);
@@ -103,8 +98,6 @@ int						main(int argc, char **argv)
 		ft_free_handle(handle);
 		algo_pass++;
 	}
-//	ft_printf("Coucou ?\n");
-//	ft_printf("%s", sol[0]);
 	ft_printf("%s", ft_print_best_sol(sol, nb_algo));
 	ft_free_sol(sol, nb_algo);
 	return (0);

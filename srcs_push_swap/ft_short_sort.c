@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 06:56:44 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 13:57:07 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/19 18:39:04 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,12 @@ void                ft_sort_under_5(t_push *handle)
 	odd = (handle->sizeb % 2 == 0) ? 0 : 1;
     check = 0;
     mid = ft_find_mid_under_5(handle->b, handle->sizeb);
-//	ft_printf("Debut du sort\n");
-//	ft_printf("Mid = %d\n", mid);
     if (handle->sizeb >= 4)
     {
         while (handle->sizeb > size + odd)
         {
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-//	sleep(2);
             if (handle->b[0] < mid)
 			{
-//				ft_printf("PRQUE ? \n");
                 ft_push_b(handle);
 				check++;
 			}
@@ -58,9 +52,6 @@ void                ft_sort_under_5(t_push *handle)
                 ft_rotate_b(handle);
         }
     }
-//	ft_printf("Split\n");
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
     if (check)
 	{
         if (handle->a[0] > handle->a[1])
@@ -72,13 +63,6 @@ void                ft_sort_under_5(t_push *handle)
 			check--;
 		}
 	}
-//	ft_printf("Sort a\n");
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
     if (!ft_is_sort(handle->b, handle->sizeb))
         ft_algo_insert_b(handle);
-//	ft_printf("Sortb\n");
-//	ft_print_tab(handle->a, handle->sizea, "handle->a");
-//	ft_print_tab(handle->b, handle->sizeb, "handle->b");
-//	sleep(1000);
 }
