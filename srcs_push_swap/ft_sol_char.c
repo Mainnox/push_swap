@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 17:33:05 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 14:06:30 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 19:33:48 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void		ft_free_sol(char **sol, char nb_algo)
 		free(sol[2]);
 		sol[2] = NULL;
 	}
+	free(sol);
 }

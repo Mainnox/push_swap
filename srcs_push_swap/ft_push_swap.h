@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 15:04:18 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 18:06:24 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct		s_push
 	char			**gnl;
 	int				ign;
 	int				low;
-	int				progress;
 	int				mid;
 	int				nbr_ok;
 	int				tour;
@@ -54,7 +53,6 @@ int					ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
 void				ft_quick_sort_1(t_push *handle);
 void				ft_algo_insert_a(t_push *handle);
 void				ft_wich_path(t_push *handle, int where,
-				void (*f)(t_push *handle), void (*ft)(t_push *handle),
 				char pole);
 int					ft_find_this(int *tab, int size, int this);
 void				ft_algo_insert_b(t_push *handle);
@@ -81,5 +79,10 @@ void				ft_free_sol(char **sol, char nb_algo);
 char				*ft_print_best_sol(char **sol, char nb_algo);
 void				ft_add_sol(char **sol, char *hack, char algo_pass);
 char				**ft_init_sol(char nb_algo);
+
+void				ft_wich_path2(t_push *handle, int nb, char pole);
+void				ft_while_f(t_push *handle, int n,
+		void (*f)(t_push *handle), void (*ft)(t_push*handle));
+void				ft_finish_him(t_push *handle);
 
 #endif

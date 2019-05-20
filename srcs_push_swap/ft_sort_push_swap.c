@@ -6,130 +6,11 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 15:08:25 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 18:10:24 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
-
-int			ft_find_this(int *tab, int size, int this)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (tab[i] == this)
-		{
-			return (i);
-		}
-		i++;
-	}
-	return (0);
-}
-
-int					ft_find_bigger(int *tab, int size)
-{
-	int i;
-	int ret;
-
-	i = 0;
-	ret = tab[i];
-	while (i < size)
-	{
-		if (tab[i] > ret)
-			ret = tab[i];
-		i++;
-	}
-	return (ret);
-}
-
-int			ft_find_n_bigger(int *tab, int size, int beforethis)
-{
-	int i;
-	int ret;
-
-	i = 0;
-	ret = beforethis - 1;
-	while (i < size)
-	{
-		if (tab[i] > ret && tab[i] < beforethis)
-			ret = tab[i];
-		i++;
-	}
-	return (ret);
-}
-
-void			ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
-{
-	int n;
-
-	if (where > handle->sizea / 2)
-	{
-		n = handle->sizea - where - 1;
-		while (n)
-		{
-			f(handle);
-			n--;
-		}
-	}
-	else
-	{
-		n = where;
-		while (n != pole)
-		{
-			ft(handle);
-			n--;
-		}
-	}
-}
-
-static void			ft_wich_path2(t_push *handle, int nb, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole)
-{
-	int where;
-
-	where = ft_find_this(handle->b, handle->sizeb, nb);
-	if (where > handle->sizeb / 2)
-	{
-		while (ft_find_this(handle->b, handle->sizeb, nb) != pole)
-			f(handle);
-	}
-	else
-	{
-		while (ft_find_this(handle->b, handle->sizeb, nb) != pole)
-			ft(handle);
-	}
-}
-
-static void			ft_while_f(t_push *handle, int n, void (*f)(t_push *handle), void(*ft)(t_push *handle))
-{
-	while (n != 0)
-	{
-		f(handle);
-		n--;
-	}
-	ft(handle);
-}
-
-static void			ft_finish_him(t_push *handle)
-{
-	int max;
-	int next;
-	int soothsayer;
-
-	soothsayer = 1;
-	max = ft_find_bigger(handle->b, handle->sizeb);
-	next = max;
-	while (handle->sizeb > 0)
-	{
-		if (soothsayer != 1)
-			next = ft_find_n_bigger(handle->b, handle->sizeb, next);
-		else
-			soothsayer--;
-		ft_wich_path2(handle, next, &ft_reverse_rotate_b, &ft_rotate_b, 0);
-		ft_push_b(handle);
-	}
-}
 
 static int				ft_worst_numbers(t_push *handle)
 {
@@ -156,9 +37,8 @@ static int				ft_worst_numbers(t_push *handle)
 	act = ft_find_n_bigger(handle->a, handle->sizea, max);
 	if (ft_find_this(handle->a, handle->sizea, act) == 1)
 		check++;
-	if (check == 5)
-		return (1);
-	return (0);
+	check = (check == 5) ? 1 : 0;
+	return (check);
 }
 
 static void				ft_algo_perso_1(t_push *handle)
@@ -174,37 +54,33 @@ static void				ft_algo_perso_1(t_push *handle)
 		}
 	max = ft_find_bigger(handle->a, handle->size);
 	where = ft_find_this(handle->a, handle->size, max);
-	ft_wich_path(handle, where, &ft_reverse_rotate_a, &ft_rotate_a ,-1);
+	ft_wich_path(handle, where, -1);
 	if (!ft_is_sort(handle->a, handle->size))
 	{
-		where = ft_find_this(handle->a, handle->size, ft_find_n_bigger(handle->a, handle->size, max));
+		where = ft_find_this(handle->a, handle->size,
+				ft_find_n_bigger(handle->a, handle->size, max));
 		ft_while_f(handle, where, &ft_push_a, &ft_rotate_a);
 		ft_while_f(handle, handle->sizea - 2, &ft_push_a, &ft_rotate_a);
 		ft_finish_him(handle);
 	}
 }
 
-int					ft_is_nsort(int *tab, int size)
+static int				ft_algo_insert_a_plus(t_push *handle, int *i, int *j)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	while (i < size - 1)
+	if (handle->a[0] > handle->a[1])
+		ft_swap_a(handle);
+	if (!ft_is_nsort(handle->a, *i))
 	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (tab[i] > tab[j])
-				return (0);
-			j++;
-		}
-		i++;
+		ft_rotate_a(handle);
+		*j = *j + 1;
+		*i = *i - 1;
+		return (1);
 	}
-	return (1);
+	*i = *i + *j;
+	return (0);
 }
 
-void				ft_algo_insert_a(t_push *handle)
+void					ft_algo_insert_a(t_push *handle)
 {
 	int		i;
 	int		j;
@@ -215,16 +91,8 @@ void				ft_algo_insert_a(t_push *handle)
 	{
 		if (!ft_is_nsort(handle->a, i))
 		{
-			if (handle->a[0] > handle->a[1])
-				ft_swap_a(handle);
-			if (!ft_is_nsort(handle->a, i))
-			{
-				ft_rotate_a(handle);
-				j++;
-				i--;
+			if (ft_algo_insert_a_plus(handle, &i, &j))
 				continue ;
-			}
-			i += j;
 			while (j > 0)
 			{
 				ft_reverse_rotate_a(handle);

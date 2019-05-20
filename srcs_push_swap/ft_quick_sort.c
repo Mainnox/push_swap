@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 13:57:58 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 17:47:51 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,7 @@ static void					ft_quick_sort_end(t_push *handle)
 {
 	if (handle->tour != 0)
 		ft_wich_path(handle, ft_replace_head(handle->a,
-				handle->sizea, handle->ign),
-				&ft_reverse_rotate_a, &ft_rotate_a, -1);
+				handle->sizea, handle->ign), -1);
 	if (handle->sizeb > handle->nbr_ok)
 		ft_split_b(handle);
 	if (handle->sizeb <= handle->nbr_ok && handle->sizeb)
