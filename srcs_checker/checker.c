@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:28:58 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 08:50:30 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 19:45:56 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int			main(int argc, char **argv)
 		if (handle->option)
 			if(ft_strstr(handle->option, "v"))
 				ft_visualizer(handle, ope, slep);
+		free(handle->gnl[0]);
 	}
 		if (handle->option)
 			if (ft_strstr(handle->option, "e"))
