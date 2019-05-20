@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/05/19 18:49:32 by akremer          ###   ########.fr        #
+#    Updated: 2019/05/20 15:05:22 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,15 @@ NAME_2 = checker
 
 LIB = libft/libftprintf.a
 
-SRC_1 =		srcs_push_swap/ft_push_swap_ope.c			\
+SRC_1 =		srcs_push_swap/ft_push_swap_ope_a.c			\
+			srcs_push_swap/ft_push_swap_ope_b.c			\
 			srcs_push_swap/ft_check_argv.c				\
 			srcs_push_swap/ft_tools.c					\
 			srcs_push_swap/ft_sort_push_swap.c			\
 			srcs_push_swap/ft_progress.c				\
+			srcs_push_swap/ft_insert_b.c				\
 			srcs_push_swap/ft_quick_sort.c				\
+			srcs_push_swap/ft_quick_sort_plus.c			\
 			srcs_push_swap/ft_sol_char.c				\
 			srcs_push_swap/ft_short_sort.c				\
 			srcs_push_swap/push_swap.c

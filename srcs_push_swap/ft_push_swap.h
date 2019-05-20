@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:34:39 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 15:04:18 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@
 # include "../libft/includes/ft_printf.h"
 # include "../libft/includes/get_next_line.h"
 
-# define NBR_OK 12
-
-typedef struct		s_know
-{
-	int				how_many;
-	struct s_know	*next;
-}					t_know;
-
 typedef struct		s_push
 {
 	int				*a;
@@ -32,7 +24,7 @@ typedef struct		s_push
 	int				size;
 	int				sizea;
 	int				sizeb;
-	char 			**argv;
+	char			**argv;
 	int				nb_ope;
 	char			*hack;
 	char			**gnl;
@@ -46,59 +38,48 @@ typedef struct		s_push
 	int				size_progres;
 }					t_push;
 
-void		ft_swap_a(t_push *handle);
-void		ft_rotate_a(t_push *handle);
-void		ft_reverse_rotate_a(t_push *handle);
-void		ft_push_a(t_push *handle);
-void		ft_swap_b(t_push *handle);
-void		ft_rotate_b(t_push *handle);
-void		ft_reverse_rotate_b(t_push *handle);
-void		ft_push_b(t_push *handle);
-int			ft_find_mid(int *tab, int size, int nbr_ok);
-void		ft_print_error(void);
-void		ft_fill_argv(t_push *handle);
-int			ft_atoi_push_swap(char *str);
-int			ft_is_sort(int *tab, int size);
-void		ft_print_tab(int *tab, size_t size, char *name);
-void		ft_sort_push_swap(t_push *handle, int algo_pass);
-int			ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
-void		ft_quick_sort_1(t_push *handle);
-void		ft_algo_insert_a(t_push *handle);
-void		ft_wich_path(t_push *handle, int where, void (*f)(t_push *handle), void (*ft)(t_push *handle), char pole);
-int			ft_find_this(int *tab, int size, int this);
-void		ft_algo_insert_b(t_push *handle);
-int			ft_find_n_bigger(int *tab, int size, int beforethis);
-int			ft_find_bigger(int *tab, int size);
-int			ft_find_low(t_push *handle);
-void		ft_put_b_on_a(t_push *handle, int how_many);
-void		ft_sort_under_5(t_push *handle);
-int			ft_how_many_less(int *tab, int size, int nbr);
+void				ft_swap_a(t_push *handle);
+void				ft_rotate_a(t_push *handle);
+void				ft_reverse_rotate_a(t_push *handle);
+void				ft_push_a(t_push *handle);
+void				ft_swap_b(t_push *handle);
+void				ft_rotate_b(t_push *handle);
+void				ft_reverse_rotate_b(t_push *handle);
+void				ft_push_b(t_push *handle);
+void				ft_print_error(void);
+int					ft_atoi_push_swap(char *str);
+void				ft_print_tab(int *tab, size_t size, char *name);
+void				ft_sort_push_swap(t_push *handle, int algo_pass);
+int					ft_realloc_push_swap(t_push *handle, char *ope, size_t k);
+void				ft_quick_sort_1(t_push *handle);
+void				ft_algo_insert_a(t_push *handle);
+void				ft_wich_path(t_push *handle, int where,
+				void (*f)(t_push *handle), void (*ft)(t_push *handle),
+				char pole);
+int					ft_find_this(int *tab, int size, int this);
+void				ft_algo_insert_b(t_push *handle);
+int					ft_find_n_bigger(int *tab, int size, int beforethis);
+int					ft_find_bigger(int *tab, int size);
+void				ft_sort_under_5(t_push *handle);
 
-/*\
- *			Progress's functions
-\*/
+int					ft_is_nsort(int *tab, int size);
 
-int			*ft_init_progress(void);
-int			ft_realloc_progress(t_push *handle, char wich);
-void		ft_add_progress(t_push *handle, int new);
+int					ft_find_mid(int *tab, int size, int nbr_ok);
+int					ft_find_low(t_push *handle);
+void				ft_put_b_on_a(t_push *handle, int how_many);
+int					ft_how_many_less(int *tab, int size, int nbr);
+int					ft_replace_head(int *tab, int size, int ign);
 
-/*\
- *			Sol's functions
-\*/
+void				ft_fill_argv(t_push *handle);
+int					ft_is_sort(int *tab, int size);
 
-void		ft_free_sol(char **sol, char nb_algo);
-char		*ft_print_best_sol(char **sol, char nb_algo);
-void		ft_add_sol(char **sol, char *hack, char algo_pass);
-char		**ft_init_sol(char nb_algo);
+int					*ft_init_progress(void);
+int					ft_realloc_progress(t_push *handle, char wich);
+void				ft_add_progress(t_push *handle, int new);
 
-/*\
- *			Know's functions
-\*/
-
-//void		ft_free_last(t_know **know);
-//int			ft_add_know(t_know **know, int how_many);
-//t_know		**ft_init_know(void);
-//t_know		*ft_go_to_last_know(t_know **know);
-//void		ft_swap_know(t_push *handle, t_know **know);
+void				ft_free_sol(char **sol, char nb_algo);
+char				*ft_print_best_sol(char **sol, char nb_algo);
+void				ft_add_sol(char **sol, char *hack, char algo_pass);
+char				**ft_init_sol(char nb_algo);
 
 #endif

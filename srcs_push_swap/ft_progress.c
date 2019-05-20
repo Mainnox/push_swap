@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/17 12:01:44 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:34:56 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 10:59:16 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			*ft_init_progress(void)
 
 	if (!(tab = (int*)malloc(sizeof(int) * 1)))
 		return (NULL);
-	tab[0]= -1;
+	tab[0] = -1;
 	return (tab);
 }
 

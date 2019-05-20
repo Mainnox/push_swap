@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:42:36 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 15:08:25 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ static void				ft_algo_perso_1(t_push *handle)
 	}
 }
 
-static int				ft_is_nsort(int *tab, int size)
+int					ft_is_nsort(int *tab, int size)
 {
 	int		i;
 	int		j;
@@ -236,70 +236,6 @@ void				ft_algo_insert_a(t_push *handle)
 		if (i < handle->sizea)
 			ft_reverse_rotate_a(handle);
 		i++;
-	}
-}
-
-void				ft_algo_insert_b(t_push *handle)
-{
-	int		i;
-	int		j;
-	int		max;
-	int		rotate;
-
-	rotate = 0;
-	max = ft_find_bigger(handle->b, handle->sizeb);
-	i = 2;
-	j = 0;
-	while (i <= handle->sizeb)
-	{
-		if (!ft_is_nsort(handle->b, i))
-		{
-			if (handle->b[0] == max)
-			{
-				ft_push_b(handle);
-				max = ft_find_n_bigger(handle->b, handle->sizeb, max);
-				if (i != 2)
-					i--;
-				rotate++;
-				continue ;
-			}
-			if (handle->b[0] == handle->low)
-			{
-				ft_put_b_on_a(handle, 1);
-				handle->low = ft_find_low(handle);
-				if (i != 2)
-					i--;
-				continue ;
-			}
-			if (handle->b[0] > handle->b[1])
-				ft_swap_b(handle);
-			if (!ft_is_nsort(handle->b, i))
-			{
-				ft_rotate_b(handle);
-				j++;
-				i--;
-				continue ;
-			}
-			i += j;
-			while (j > 0)
-			{
-				ft_reverse_rotate_b(handle);
-				j--;
-			}
-		}
-		if (ft_is_sort(handle->b, handle->sizeb))
-			break ;
-		if (i < handle->sizeb)
-			ft_reverse_rotate_b(handle);
-		i++;
-	}
-	while (handle->sizeb)
-		ft_put_b_on_a(handle, 1);
-	handle->ign += rotate;
-	while (rotate)
-	{
-		ft_rotate_a(handle);
-		rotate--;
 	}
 }
 

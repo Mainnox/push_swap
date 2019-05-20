@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:43:16 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/17 12:32:07 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 11:18:52 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		*ndest;
+	int			*ndest;
 	const int	*nsrc;
 
 	ndest = (int*)dest;

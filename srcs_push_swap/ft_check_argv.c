@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:07:23 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:34:13 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 10:57:04 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void			ft_check_argv(t_push *handle)
 		{
 			if (ft_isdigit(handle->argv[i][j]) == 0)
 			{
-				if (handle->argv[i][j] == '-' && ft_isdigit(handle->argv[i][j + 1]) == 1)
+				if (handle->argv[i][j] == '-'
+						&& ft_isdigit(handle->argv[i][j + 1]) == 1)
 				{
 					j++;
 					continue ;
@@ -58,7 +59,7 @@ static void			ft_check_a(t_push *handle)
 	}
 }
 
-int				ft_is_sort(int *tab, int size)
+int					ft_is_sort(int *tab, int size)
 {
 	int i;
 	int j;
@@ -80,7 +81,7 @@ int				ft_is_sort(int *tab, int size)
 	return (1);
 }
 
-void			ft_fill_argv(t_push *handle)
+void				ft_fill_argv(t_push *handle)
 {
 	ft_check_argv(handle);
 	ft_check_a(handle);

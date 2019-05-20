@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 17:33:05 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:40:10 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/20 14:06:30 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ char		**ft_init_sol(char nb_algo)
 
 void		ft_add_sol(char **sol, char *hack, char algo_pass)
 {
-		if (!(sol[algo_pass] = (char*)malloc(sizeof(char) * ft_strlen(hack))))
-			ft_print_error();
-		ft_strcpy(sol[algo_pass], hack);
+	if (!(sol[algo_pass] = (char*)malloc(sizeof(char) * ft_strlen(hack))))
+		ft_print_error();
+	ft_strcpy(sol[algo_pass], hack);
 }
 
 char		*ft_print_best_sol(char **sol, char nb_algo)
