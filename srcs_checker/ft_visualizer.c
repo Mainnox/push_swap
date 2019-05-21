@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/02 08:06:14 by akremer           #+#    #+#             */
-/*   Updated: 2019/04/02 14:17:29 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 15:44:01 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static char	*ft_wich_ope(int ope)
 	else if (ope == 3)
 		return ("ss");
 	else if (ope == 4)
-		return ("pa");
-	else if (ope == 5)
 		return ("pb");
+	else if (ope == 5)
+		return ("pa");
 	else if (ope == 6)
 		return ("ra");
 	else if (ope == 7)
@@ -50,12 +50,14 @@ static void	ft_print_visu(t_check *handle)
 	{
 		ft_printf("| ");
 		if (i < handle->sizea)
-			ft_printf("A[%d] = %-*d |", i, 15 - ft_nbrlen(i, 0, 10), handle->a[i]);
+			ft_printf("A[%d] = %-*d |",
+					i, 15 - ft_nbrlen(i, 0, 10), handle->a[i]);
 		else
 			ft_printf("                      |");
 		ft_printf("          | ");
 		if (j < handle->sizeb)
-			ft_printf("B[%d] = %-*d |", j, 15 - ft_nbrlen(j, 0, 10), handle->b[j]);
+			ft_printf("B[%d] = %-*d |",
+					j, 15 - ft_nbrlen(j, 0, 10), handle->b[j]);
 		else
 			ft_printf("                      |");
 		ft_printf("\n");
@@ -69,10 +71,11 @@ void		ft_visualizer(t_check *handle, int ope, int slep)
 {
 	int		i;
 
-	i =	0;
+	i = 0;
 	system("clear");
 	ft_printf("H----------------------------------------------------------H\n");
-	ft_printf("|            A          | %5s    |           B           |\n", ft_wich_ope(ope));
+	ft_printf("|            A          | %5s    |           B           |\n",
+			ft_wich_ope(ope));
 	ft_printf("H----------------------------------------------------------H\n");
 	ft_print_visu(handle);
 	ft_printf("H----------------------------------------------------------H\n");

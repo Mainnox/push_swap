@@ -6,13 +6,13 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 14:19:02 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/14 14:00:53 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 14:38:44 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_checker.h"
 
-static int		ft_check_ope_checker(t_check *handle)
+static int	ft_check_ope_checker(t_check *handle)
 {
 	if (ft_strcmp(handle->gnl[0], "sa\n") == 0)
 		return (1);
@@ -46,18 +46,6 @@ static void	ft_swap_s_checker(t_check *handle)
 	ft_swap_b_checker(handle);
 }
 
-static void	ft_rotate_r_checker(t_check *handle)
-{
-	ft_rotate_a_checker(handle);
-	ft_rotate_b_checker(handle);
-}
-
-static void	ft_reverse_rotate_r_checker(t_check *handle)
-{
-	ft_reverse_rotate_a_checker(handle);
-	ft_reverse_rotate_b_checker(handle);
-}
-
 int			ft_do_op_checker(t_check *handle)
 {
 	int ope;
@@ -77,14 +65,8 @@ int			ft_do_op_checker(t_check *handle)
 		ft_rotate_a_checker(handle);
 	else if (ope == 7)
 		ft_rotate_b_checker(handle);
-	else if (ope == 8)
-		ft_rotate_r_checker(handle);
-	else if (ope == 9)
-		ft_reverse_rotate_a_checker(handle);
-	else if (ope == 10)
-		ft_reverse_rotate_b_checker(handle);
-	else if (ope == 11)
-		ft_reverse_rotate_r_checker(handle);
+	else if (ope >= 8)
+		ft_do_ope_checker_plus(handle, ope);
 	else
 		ft_print_error_checker();
 	return (ope);

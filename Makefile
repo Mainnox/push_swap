@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/19 14:26:56 by akremer           #+#    #+#              #
-#    Updated: 2019/05/21 11:36:05 by akremer          ###   ########.fr        #
+#    Updated: 2019/05/21 16:04:55 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,13 @@ SRC_1 =		srcs_push_swap/ft_push_swap_ope_a.c			\
 SRC_2 =		srcs_checker/checker.c						\
 			srcs_checker/ft_checker_ope.c				\
 			srcs_checker/ft_tools_checker.c				\
+			srcs_checker/ft_check_argv_checker_plus.c	\
+			srcs_checker/ft_checker_ope_b.c				\
 			srcs_checker/ft_visualizer.c				\
 			srcs_checker/ft_check_argv_checker.c		\
-			srcs_checker/ft_do_ope_checker.c
+			srcs_checker/ft_do_ope_checker.c			\
+			srcs_checker/ft_print_error_checker.c		\
+			srcs_checker/ft_do_ope_checker_plus.c
 
 OBJ_1 = $(SRC_1:%.c=%.o)
 
