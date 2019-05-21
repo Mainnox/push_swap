@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/21 19:17:40 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 19:24:23 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct		s_push
 	char			**gnl;
 	int				ign;
 	int				low;
-	long				mid;
+	long			mid;
 	int				nbr_ok;
 	int				tour;
 	int				*progres;
@@ -57,12 +57,12 @@ void				ft_wich_path(t_push *handle, int where,
 int					ft_find_this(int *tab, int size, int this);
 void				ft_algo_insert_b(t_push *handle);
 int					ft_find_n_bigger(int *tab, int size, int beforethis);
-long					ft_find_bigger(int *tab, int size);
+long				ft_find_bigger(int *tab, int size);
 void				ft_sort_under_5(t_push *handle);
 
 int					ft_is_nsort(int *tab, int size);
 
-long					ft_find_mid(int *tab, int size, int nbr_ok);
+long				ft_find_mid(int *tab, int size, int nbr_ok);
 int					ft_find_low(t_push *handle);
 void				ft_put_b_on_a(t_push *handle, int how_many);
 int					ft_how_many_less(int *tab, int size, long nbr);

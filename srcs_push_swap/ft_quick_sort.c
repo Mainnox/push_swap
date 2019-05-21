@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/21 19:17:44 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 19:25:03 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int					ft_split_b_while(t_push *handle, int size,
 
 static void					ft_split_b(t_push *handle)
 {
-	long		mid;
+	long	mid;
 	int		size;
 	int		progres;
 	int		j;
@@ -125,7 +125,6 @@ void						ft_quick_sort_1(t_push *handle)
 	if (!ft_is_sort(handle->a, handle->sizea) && !handle->sizeb)
 	{
 		handle->tour++;
-//		if (handle->tour < 2)
 		ft_quick_sort_1(handle);
 	}
 }
