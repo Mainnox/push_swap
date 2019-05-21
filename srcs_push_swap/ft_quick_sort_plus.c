@@ -6,13 +6,13 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:52:53 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/21 18:10:57 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 19:02:56 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int							ft_how_many_less(int *tab, int size, int nb)
+int							ft_how_many_less(int *tab, int size, long nb)
 {
 	int		ret;
 	int		i;

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+../push_swap $ARG > output
+
+printf "sa\t" ; cat output | grep "^sa$" | wc -l
+printf "sb\t" ; cat output | grep "^sb$" | wc -l
+printf "ss\t" ; cat output | grep "^ss$" | wc -l
+printf "pa\t" ; cat output | grep "^pa$" | wc -l
+printf "pb\t" ; cat output | grep "^pb$" | wc -l
+printf "ra\t" ; cat output | grep "^ra$" | wc -l
+printf "rb\t" ; cat output | grep "^rb$" | wc -l
+printf "rr\t" ; cat output | grep '^rr$' | wc -l
+printf "rra\t" ; cat output | grep "^rra$" | wc -l
+printf "rrb\t" ; cat output | grep "^rrb$" | wc -l
+printf "rrr\t" ; cat output | grep "^rrr$" | wc -l
+printf "total\t" ; cat output | grep -E '^sa$|^sb$|^ss$|^pa$|^pb$|^ra$|^rb$|^rr$|^rra$|^rrb$|^rrr$' | wc -l
