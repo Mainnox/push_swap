@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 12:59:45 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 19:36:31 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 11:53:09 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int						main(int argc, char **argv)
 	algo_pass = 0;
 	if (argc == 1)
 		return (0);
-	nb_algo = (argc < 10) ? 3 : 1;
+	nb_algo = (argc < 7) ? 4 : 1;
 	sol = ft_init_sol(nb_algo);
 	while (algo_pass < nb_algo)
 	{

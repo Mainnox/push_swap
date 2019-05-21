@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/19 17:33:05 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 19:33:48 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 11:40:03 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ char		**ft_init_sol(char nb_algo)
 			ft_print_error();
 		*sol = NULL;
 	}
-	if (nb_algo == 3)
+	if (nb_algo == 4)
 	{
-		if (!(sol = (char**)malloc(sizeof(char*) * 3)))
+		if (!(sol = (char**)malloc(sizeof(char*) * 4)))
 			ft_print_error();
 		*sol = NULL;
 	}
@@ -71,6 +71,8 @@ void		ft_free_sol(char **sol, char nb_algo)
 		sol[1] = NULL;
 		free(sol[2]);
 		sol[2] = NULL;
+		free(sol[3]);
+		sol[3] = NULL;
 	}
 	free(sol);
 }

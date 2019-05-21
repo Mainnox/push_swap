@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 06:56:54 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 18:10:24 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 11:46:58 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,4 +115,6 @@ void					ft_sort_push_swap(t_push *handle, int algo_pass)
 		ft_algo_perso_1(handle);
 	if (algo_pass == 2)
 		ft_algo_insert_a(handle);
+	if (algo_pass == 3)
+		ft_sort_under_5_a(handle);
 }

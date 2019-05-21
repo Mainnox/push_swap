@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 19:37:51 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 11:43:18 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,7 @@ void				ft_wich_path2(t_push *handle, int nb, char pole);
 void				ft_while_f(t_push *handle, int n,
 		void (*f)(t_push *handle), void (*ft)(t_push*handle));
 void				ft_finish_him(t_push *handle);
+
+void				ft_sort_under_5_a(t_push *handle);
 
 #endif
