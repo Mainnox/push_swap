@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:56:18 by akremer           #+#    #+#             */
-/*   Updated: 2019/03/22 16:11:49 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 17:08:20 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ int			ft_atoi_checker(char *str)
 		{
 			result = result * 10 + str[i] - 48;
 			i++;
+			if ((result > 2147483647 && nega == 1)
+					|| (result > 2147483648 && nega == -1))
+				ft_print_error_checker();
 		}
-		if (result > 2147483647 || result < -2147483648)
-			ft_print_error_checker();
 	}
 	return (result * nega);
 }

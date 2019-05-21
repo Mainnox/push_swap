@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 14:28:48 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 17:47:51 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 17:53:25 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void						ft_quick_sort_1(t_push *handle)
 		handle->low = ft_find_low(handle);
 	if (handle->sizea - handle->ign > 0 && handle->progres[0] <= 0)
 		ft_split_a(handle);
+	else if (handle->sizea - handle->ign == 1)
+		ft_push_a(handle);
 	else
 	{
 		while (handle->progres[handle->size_progres - 2])
@@ -123,6 +125,11 @@ void						ft_quick_sort_1(t_push *handle)
 	if (!ft_is_sort(handle->a, handle->sizea) && !handle->sizeb)
 	{
 		handle->tour++;
+		if (handle->tour == 1)
+		{
+			ft_print_tab(handle->a, handle->sizea, "handle->a");
+			ft_print_tab(handle->b, handle->sizeb, "handle->b");
+		}
 		ft_quick_sort_1(handle);
 	}
 }

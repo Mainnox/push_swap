@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:52:53 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/20 13:55:07 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 18:10:57 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int							ft_how_many_less(int *tab, int size, int nb)
 	return (ret);
 }
 
-int							ft_find_mid(int *tab, int size, int nbr_ok)
+long							ft_find_mid(int *tab, int size, int nbr_ok)
 {
 	int		i;
 	int		less;
 
 	i = 0;
 	if (size <= nbr_ok)
-		return (2147483647);
+		return (21474836470);
 	while (i < size)
 	{
 		less = ft_how_many_less(tab, size, tab[i]);
@@ -43,7 +43,7 @@ int							ft_find_mid(int *tab, int size, int nbr_ok)
 			break ;
 		i++;
 	}
-	return (tab[i]);
+	return ((long)tab[i]);
 }
 
 void						ft_put_b_on_a(t_push *handle, int how_many)

@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 09:56:07 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/21 11:57:46 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 18:11:32 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void				ft_sort_under_5(t_push *handle);
 
 int					ft_is_nsort(int *tab, int size);
 
-int					ft_find_mid(int *tab, int size, int nbr_ok);
+long					ft_find_mid(int *tab, int size, int nbr_ok);
 int					ft_find_low(t_push *handle);
 void				ft_put_b_on_a(t_push *handle, int how_many);
 int					ft_how_many_less(int *tab, int size, int nbr);

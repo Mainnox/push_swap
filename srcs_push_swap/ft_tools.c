@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 16:56:18 by akremer           #+#    #+#             */
-/*   Updated: 2019/05/19 18:43:17 by akremer          ###   ########.fr       */
+/*   Updated: 2019/05/21 17:59:27 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ int			ft_atoi_push_swap(char *str)
 		while (str[i] >= '0' && str[i] <= '9')
 		{
 			result = result * 10 + str[i] - 48;
+			if ((result > 2147483648 && nega == -1)
+					|| (result > 2147483647 && nega == 1))
+				ft_print_error();
 			i++;
 		}
-		if (result > 2147483647 || result < -2147483648)
-			ft_print_error();
 	}
 	return (result * nega);
 }
